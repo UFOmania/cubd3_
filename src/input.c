@@ -19,6 +19,7 @@ int	key_press(int key_code, void *t)
 		game->player.rot_dir = -1;
 	else if (key_code == 124)
 		game->player.rot_dir = 1;
+	return 0;
 }
 int	key_release(int key_code, void *t)
 {
@@ -37,6 +38,7 @@ int	key_release(int key_code, void *t)
 		game->player.rot_dir = 0;
 	else if (key_code == 124)
 		game->player.rot_dir = 0;
+		return 0;
 }
 
 

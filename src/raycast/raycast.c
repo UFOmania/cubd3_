@@ -1,20 +1,20 @@
 #include "../../include/cube.h"
 
 
-static void get_facing_dir(t_game *game)
-{
-	double	angle;
+// static void get_facing_dir(t_game *game)
+// {
+// 	double	angle;
 
-	angle = game->player.rot_angle;
-	if (angle < M_PI / 4 && angle > 5 * M_PI / 4)
-		game->player.right = 1;
-	else
-		game->player.right = -1;
-	if (angle < M_PI && angle >= 0)
-		game->player.up = -1;
-	else
-		game->player.up = 1;
-}
+// 	angle = game->player.rot_angle;
+// 	if (angle < M_PI / 4 && angle > 5 * M_PI / 4)
+// 		game->player.right = 1;
+// 	else
+// 		game->player.right = -1;
+// 	if (angle < M_PI && angle >= 0)
+// 		game->player.up = -1;
+// 	else
+// 		game->player.up = 1;
+// }
 /*
 cos(angle) > 0 → ray going right
 cos(angle) < 0 → ray going left
@@ -64,11 +64,13 @@ void	draw_strip(t_game *game, double dist, double ppd, double x, t_ray ray)
 	double marjen = HEIGHT - wall_h;
 	double down_m = marjen * 0.5;
 	double top_m = marjen - down_m;
+	(void)top_m;
 	if (marjen < 0)
 		marjen = 0;
 
 
 	double step  = TILE_SIZE / wall_h;
+	(void)step;
 	double texPos = 0;
 	
 		double t = ((wall_h / 2) - (HEIGHT / 2));
@@ -107,6 +109,7 @@ void	raycast(t_game *game)
 	// printf("player angle [%f] - deg_to_rad(%f) = [%f]\n", game->player.rot_angle, FOV / 2, deg_to_rad(FOV / 2));
 	// exit(1);
 	step = deg_to_rad(FOV / (double)WIDTH);
+	(void)step;
 	i = 0;
 	while (i < WIDTH)
 	{

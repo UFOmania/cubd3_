@@ -27,16 +27,6 @@ int	init_game(t_game *game)
 
 	// if (read_map(game) == R_FAIL)
 	// 	return (R_FAIL);
-
-	t_map_mg *map_mg;
-	map_mg = malloc(sizeof(t_map_mg));
-	if (!map_mg)
-		return (display_error_message(ERR_MALLOC_FAILED, NULL));
-
-	init_game_mg(map_mg);
-	apply_map_ope("map.cub", map_mg);
-	
-	game->map = map_mg->maps;
 	// game->map
 	// exit(0);
 

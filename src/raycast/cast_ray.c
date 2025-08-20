@@ -4,7 +4,7 @@ static t_vec2	get_h_intercept(t_vec2 pos, double angle, t_frame *frame)
 {
 	t_vec2	h_intercept;
 	double	a;
-
+(void)frame;
 	h_intercept = (t_vec2){INFINITY,INFINITY};
 	a = sin(angle);
 	// //what side the player is looking to
@@ -24,7 +24,7 @@ static t_vec2	get_v_intercept(t_vec2 pos, double angle, t_frame *frame)
 {
 	t_vec2	v_intercept;
 	double	a;
-
+(void)frame;
 	v_intercept = (t_vec2){INFINITY,INFINITY};
 	a = cos(angle);
 	if (fabs(a) > 0.0000001)
