@@ -12,11 +12,13 @@
 #define R_SUCCESS 1
 
 //settings
-#define WIDTH 800
-#define HEIGHT 800
-#define MOVE_SPEED 60
+#define WIDTH 1024
+#define HEIGHT 720
+#define MOVE_SPEED 6
+#define ROT_SPEED 0.1
 #define FOV 50.0
-#define TILE_SIZE 256.0
+#define TILE_SIZE 128.0
+#define PLAYER_RADIUS 5
 
 #define CEILING_COLOR   0xFFAAAA   // light red/pink
 #define FLOOR_COLOR     0xAAAAFF   // light blue
@@ -43,6 +45,14 @@ typedef struct s_vec2
 	double	y;
 }	t_vec2;
 
+typedef struct s_texture
+{
+	void		*texture;
+	int			width;
+	int			height;
+
+}t_texture;
+
 typedef struct s_player
 {
 	t_vec2	pos;
@@ -68,11 +78,14 @@ typedef struct s_game
 	void		*mlx;
 	void		*win;
 	char		**map;
-	void		*texture;
-	void		*door;
+	int			floor_color;
+	int			ceiling_color;
+	t_texture	n_texture;
+	t_texture	s_texture;
+	t_texture	w_texture;
+	t_texture	e_texture;
 	t_frame		frame;
 	t_player	player;
-	int			color;
 }	t_game;
 
 //utils
@@ -89,7 +102,7 @@ void	draw_map(t_game *game);
 int	read_map(t_game *game);
 
 //init_game
-int	init_game(t_game *game);
+int	init_game(t_game *game, char *map_name);
 
 //update
 int update(void *t);
@@ -109,5 +122,8 @@ void draw_player(t_game *game);
 void	raycast(t_game *game);
 t_ray	cast_ray(t_game *game, t_vec2 start, double angle);
 double distance(t_vec2 a, t_vec2 b);
+
+// texture 
+int load_texture(t_game *game, t_map_mg *mg);
 
 #endif

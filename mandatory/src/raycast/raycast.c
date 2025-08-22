@@ -50,16 +50,14 @@ void	draw_strip(t_game *game, double dist, double ppd, double x, t_ray ray)
 	int texX;
 
 	if (ray.side == HORIZONTAL)
-		texX = ((int)ray.hit_pos.x % (int)TILE_SIZE);
+		texX = ((int)ray.hit_pos.x % game->s_texture.width);
 	else if (ray.side == VERTICAL)
-		texX = ((int)ray.hit_pos.y % (int)TILE_SIZE);
+		texX = ((int)ray.hit_pos.y % game->s_texture.height);
 
 
 	if (dist == 0)
 		return ;
 	double wall_h = (TILE_SIZE * ppd) / dist;
-	// if(wall_h > HEIGHT)
-	// 	wall_h = HEIGHT;
 
 	double marjen = HEIGHT - wall_h;
 	double down_m = marjen * 0.5;
@@ -74,13 +72,13 @@ void	draw_strip(t_game *game, double dist, double ppd, double x, t_ray ray)
 	double texPos = 0;
 	
 		double t = ((wall_h / 2) - (HEIGHT / 2));
-		texPos = t * TILE_SIZE /wall_h;
+		texPos = t * TILE_SIZE / wall_h;
 		for(int y = marjen / 2 ; y < HEIGHT - (marjen / 2); y++)
 		{
 			int texY = ((y + t) * TILE_SIZE / wall_h);
 			int color;
 			if (ray.type == '1')
-				color = get_pixel(game->texture, (t_vec2){texX, texY});
+				color = get_pixel(game->s_texture.texture, (t_vec2){texX, texY});
 			put_pixel(&game->frame, (t_vec2){x, y}, color);
 		}
 

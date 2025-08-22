@@ -2,19 +2,19 @@ NAME = cub3d
 
 
 SOURC = \
-		parsing/handle_map.c parsing/parsing.c \
-		parsing/validation.c parsing/init_map.c \
-		parsing/handle_error.c parsing/destroy_game.c \
-		src/raycast/cast_ray.c src/raycast/get_distance.c  src/raycast/raycast.c \
-		src/shapes/circle.c src/shapes/line.c src/shapes/map.c src/shapes/put_pixel.c src/shapes/rect.c \
-		src/close.c src/init_game.c src/input.c src/main.c src/player.c src/update.c 
+		mandatory/parsing/handle_map.c mandatory/parsing/parsing.c \
+		mandatory/parsing/validation.c mandatory/parsing/init_map.c \
+		mandatory/parsing/handle_error.c mandatory/parsing/destroy_game.c \
+		mandatory/src/raycast/cast_ray.c mandatory/src/raycast/get_distance.c  mandatory/src/raycast/raycast.c \
+		mandatory/src/shapes/circle.c mandatory/src/shapes/line.c mandatory/src/shapes/map.c mandatory/src/shapes/put_pixel.c mandatory/src/shapes/rect.c \
+		mandatory/src/close.c mandatory/src/init_game.c mandatory/src/input.c mandatory/src/main.c mandatory/src/player.c mandatory/src/update.c \
 		
 
 OBJ = $(SOURC:%.c=%.o)
-LIBFT_PATH = libft/libft.a
+LIBFT_PATH = mandatory/libft/libft.a
 
 CC = cc
-CFLAGS =# -Wall -Wextra -Werror -fsanitize=address
+CFLAGS =-g3 -fsanitize=address
 BLACK:="\033[1;30m"
 RED:="\033[1;31m"
 GREEN:="\033[1;32m"
@@ -37,15 +37,14 @@ $%.o: $%.c header.h
 
 
 sub_program:
-	make -C libft/ all
+	make -C mandatory/libft/ all
 clean:
 	@echo $(PURPLE) "[🧹Cleaning...🧹]" $(EOC)
 	rm -f $(OBJ)
-	$(MAKE) clean -C libft
+	$(MAKE) clean -C mandatory/libft fclean
 
 fclean: clean
 	rm -f $(NAME)
-	$(MAKE) fclean -C libft
 
 re: fclean all
 	@echo $(PURPLE) "[🧹FCleaning...🧹]" $(EOC)

@@ -45,7 +45,7 @@ int	loop_read_map(t_map_mg *game_mg, int fd)
 			close(fd);
 			game_mg->maps[i] = NULL;
 			fprintf(stderr, "Error: cannot open file\n");
-		  	//free_game_mg(game_mg);
+		  	//free_map_mg(game_mg);
 			return (1);
 		}
 
@@ -90,31 +90,29 @@ int apply_map_ope(char *map_name , t_map_mg *game_mg )
 
 	if (open_map(map_name, game_mg))
 	{
-		free_game_mg(game_mg); // if the malloc map is return null this made segv
+		free_map_mg(game_mg); // if the malloc map is return null this made segv
 		return 1;
 	}
 
 	if (!is_valid_config_count(game_mg) || !validate_game_mg(game_mg))
 	{
-		free_game_mg(game_mg);
+		free_map_mg(game_mg);
 		return (display_error_file(ERR_INVALID_MAP_CONFIG, NULL));
 	}
 	if (replace_map(game_mg))//should repace this
 	{
-		free_game_mg(game_mg);
+		free_map_mg(game_mg);
 		return 1;
 	}
 	if (check_map_enclosure(game_mg->maps))
 	{	
-		free_game_mg(game_mg);
+		free_map_mg(game_mg);
 		return 1;
 	}
 	if (find_player_position(game_mg))
 	{	
-		free_game_mg(game_mg);
+		free_map_mg(game_mg);
 		return 1;
 	}
-	//prin_deb(game_mg);
-//    free_game_mg(game_mg);
 	return 0;
 }

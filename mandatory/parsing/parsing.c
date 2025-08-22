@@ -324,8 +324,10 @@ int find_player_position(t_map_mg *game_mg)
         {
             if (is_player_symbol(game_mg->maps[row][col]))
             {
+				game_mg->player_seen = game_mg->maps[row][col];
                 game_mg->player_pos[0] = row;
                 game_mg->player_pos[1] = col;
+				game_mg->maps[row][col] = '0';
                 game_mg->player_count++;
             }
             col++;

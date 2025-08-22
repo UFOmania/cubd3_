@@ -1,6 +1,6 @@
 #include "../include/header.h"
 
-void free_game_mg(t_map_mg *game_mg)
+void free_map_mg(t_map_mg *game_mg)
 {
     int i;
 

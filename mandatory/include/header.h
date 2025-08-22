@@ -7,6 +7,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include "../libft/libft.h"
+
 // error_messages.h
 #define ERR_MALLOC_FAILED            1
 #define ERR_CANNOT_OPEN_FILE         2
@@ -40,10 +41,12 @@ typedef struct s_map_mg
 	char	*floor_color_f;
 	char	*floor_color_c;
     int     map_hi;
+	char	player_seen;
     int     player_pos[2];
     int     player_count;
     int     parsed_flags[12]; // 0=NO, 1=SO, 2=WE, 3=EA, 4=F, 5=C
 } t_map_mg;
+
 int is_valid_arg(char *map_name);
 bool is_has_space_one_zero(char *line);
 int rgb_string_to_int(const char *color_str);
@@ -53,7 +56,7 @@ bool validate_game_mg(t_map_mg *game_mg);
 void prin_deb(t_map_mg *game_mg);
 int init_parsed_flags(t_map_mg *game_mg);
 int init_floor_color(t_map_mg *game_mg);
-void free_game_mg(t_map_mg *game_mg);
+void free_map_mg(t_map_mg *game_mg);
 int init_map_mg(t_map_mg *game_mg);
 int parse_line(t_map_mg *game_mg, char *line, int *i);
 int is_valid_map(t_map_mg *game_mg);
