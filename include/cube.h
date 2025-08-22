@@ -14,7 +14,7 @@
 //settings
 #define WIDTH 800
 #define HEIGHT 800
-#define MOVE_SPEED 60
+#define MOVE_SPEED 6
 #define FOV 50.0
 #define TILE_SIZE 256.0
 
@@ -63,15 +63,28 @@ typedef struct s_ray
 	int		side;
 }	t_ray;
 
+
+typedef struct s_texture
+{
+	void		*texture;
+	int			width;
+	int			height;
+
+}t_texture;
+
+
 typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
 	char		**map;
-	void		*texture;
-	void		*door;
+	t_texture	n_texture;
+	t_texture	s_texture;
+	t_texture	w_texture;
+	t_texture	e_texture;
 	t_frame		frame;
 	t_player	player;
+	struct s_map_mg	*map_mg;
 	int			color;
 }	t_game;
 
@@ -109,5 +122,6 @@ void draw_player(t_game *game);
 void	raycast(t_game *game);
 t_ray	cast_ray(t_game *game, t_vec2 start, double angle);
 double distance(t_vec2 a, t_vec2 b);
-
+// texture 
+int load_texture(t_game *game);
 #endif

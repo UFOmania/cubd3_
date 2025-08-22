@@ -14,13 +14,6 @@ static t_player init_player()
 	return (p);
 }
 
-void load_texure(t_game *game)
-{
-	int	tmp;
-	game->texture = mlx_xpm_file_to_image(game->mlx, "wall.xpm", &tmp, &tmp);
-	game->door = mlx_xpm_file_to_image(game->mlx, "door.xpm", &tmp, &tmp);
-}
-
 int	init_game(t_game *game)
 {
 	game->color = 0;
@@ -36,7 +29,7 @@ int	init_game(t_game *game)
 		return (R_FAIL);
 	if ((game->frame.img = mlx_new_image(game->mlx, WIDTH, HEIGHT)) == NULL)
 		return (R_FAIL);
-	load_texure(game);
+	 load_texture(game);
 	game->frame.addr = mlx_get_data_addr(game->frame.img, &game->frame.bits_per_pixel, &game->frame.line_length, &game->frame.endian);
 	game->player = init_player();
 	return (R_SUCCESS);

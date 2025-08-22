@@ -7,7 +7,8 @@ SOURC = \
 		parsing/handle_error.c parsing/destroy_game.c \
 		src/raycast/cast_ray.c src/raycast/get_distance.c  src/raycast/raycast.c \
 		src/shapes/circle.c src/shapes/line.c src/shapes/map.c src/shapes/put_pixel.c src/shapes/rect.c \
-		src/close.c src/init_game.c src/input.c src/main.c src/player.c src/update.c 
+		src/close.c src/init_game.c src/input.c src/main.c src/player.c src/update.c \
+		parsing/load_utils.c
 		
 
 OBJ = $(SOURC:%.c=%.o)

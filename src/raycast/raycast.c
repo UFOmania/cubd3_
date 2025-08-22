@@ -80,7 +80,8 @@ void	draw_strip(t_game *game, double dist, double ppd, double x, t_ray ray)
 			int texY = ((y + t) * TILE_SIZE / wall_h);
 			int color;
 			if (ray.type == '1')
-				color = get_pixel(game->texture, (t_vec2){texX, texY});
+				color = get_pixel(game->s_texture.texture, (t_vec2){texX, texY});
+				
 			put_pixel(&game->frame, (t_vec2){x, y}, color);
 		}
 

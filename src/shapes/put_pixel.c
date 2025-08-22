@@ -18,7 +18,6 @@ unsigned int get_pixel(void *texture, t_vec2 pos)
 	int		size_line;
 	int		endian;
 	void	*addr = mlx_get_data_addr(texture, &bpp, &size_line, &endian);
-
 	if (pos.x >= 0 && pos.x < WIDTH && pos.y >= 0 && pos.y < HEIGHT) //dont access the data outside the image address
 	{
 		dst = addr + (int)(pos.y * size_line ) + (int)(pos.x * (bpp / 8));

@@ -7,6 +7,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include "../libft/libft.h"
+#include "cube.h"
 // error_messages.h
 #define ERR_MALLOC_FAILED            1
 #define ERR_CANNOT_OPEN_FILE         2
@@ -72,4 +73,5 @@ int	display_error_color(int code);
 int	display_error_direction(int code);
 void print_error2(const char *msg, const char *detail);
 void print_error(const char *msg);
+
 #endif

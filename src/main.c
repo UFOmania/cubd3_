@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 		return fprintf(stderr, "Error processing map\n"), 1;
 	
 	game.map = map_mg->maps;
-
+	game.map_mg = map_mg;
 	if (init_game(&game) == R_FAIL)
 		return (1);
 	//prin_deb(map_mg);
