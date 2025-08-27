@@ -1,6 +1,6 @@
 #include "../include/cub.h"
 
-double deg_to_rad(double degrees)
+double	deg_to_rad(double degrees)
 {
-    return (degrees * (M_PI / 180.0));
+	return (degrees * (M_PI / 180.0));
 }

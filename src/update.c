@@ -1,6 +1,6 @@
 #include "../include/cub.h"
 
-void update(void *param)
+void	update(void *param)
 {
 	t_game	*game;
 

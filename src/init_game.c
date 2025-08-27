@@ -1,18 +1,5 @@
 #include "../include/cub.h"
 
-mlx_image_t	*load_texture(t_game *game, char *src)
-{
-	mlx_texture_t	*tex; 
-	mlx_image_t		*img;
-
-	tex = mlx_load_png(src);
-	if (tex == NULL)
-		return (NULL);
-	img = mlx_texture_to_image(game->mlx, tex);
-	mlx_delete_texture(tex);
-	return (img);
-}
-
 static void	init_player(t_map_mg *mg, t_game *game)
 {
 	char	dir;
@@ -35,24 +22,7 @@ static void	init_player(t_map_mg *mg, t_game *game)
 	game->floor_color = mg->floor_color;
 }
 
-static int	load_textures(t_game *game, t_map_mg *mg)
-{
-	*(game->texture + S) = load_texture(game, mg->north);
-	*(game->texture + N) = load_texture(game, mg->south);
-	*(game->texture + E) = load_texture(game, mg->west);
-	*(game->texture + W) = load_texture(game, mg->east);
-	if (!*(game->texture + N) || !*(game->texture + S) || !*(game->texture + W) || !*(game->texture + E))
-	{
-		mlx_delete_image(game->mlx, *(game->texture + S));
-		mlx_delete_image(game->mlx, *(game->texture + N));
-		mlx_delete_image(game->mlx, *(game->texture + W));
-		mlx_delete_image(game->mlx, *(game->texture + E));
-		return (mlx_strerror(mlx_errno), R_FAIL);
-	}
-	return (R_SUCCESS);	
-}
-
-int	dup_map(char ***dst, char **map)
+static int	dup_map(char ***dst, char **map)
 {
 	char	**new_map;
 	int		i;
@@ -81,17 +51,17 @@ int	dup_map(char ***dst, char **map)
 	return (R_SUCCESS);
 }
 
-int	analyze_map(t_game *game, char *map_name)
+static int	analyze_map(t_game *game, char *map_name)
 {
 	t_map_mg	*mg;
 
 	mg = malloc(sizeof(t_map_mg));
 	if (!mg)
-		return (display_error_input_malloc(ERR_MALLOC_FAILED, R_FAIL));
+		return (display_error_input_malloc(ERR_MALLOC_FAILED, NULL), R_FAIL);
 	if (init_map_mg(mg))
-		return (fprintf(stderr, "Error processing map\n"), R_FAIL);
+		return (R_FAIL);
 	if (apply_map_ope(map_name, mg))
-		return (fprintf(stderr, "Error processing map\n"), R_FAIL);
+		return (R_FAIL);
 	if (dup_map(&game->map, mg->maps) == R_FAIL)
 		return (free_map_mg(mg), R_FAIL);
 	init_player(mg, game);
@@ -101,7 +71,7 @@ int	analyze_map(t_game *game, char *map_name)
 	return (R_SUCCESS);
 }
 
-int init_game(t_game *game, char *map_name)
+int	init_game(t_game *game, char *map_name)
 {
 	if (analyze_map(game, map_name) == R_FAIL)
 		return (R_FAIL);
@@ -109,7 +79,7 @@ int init_game(t_game *game, char *map_name)
 	game->img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 	if (!game->img)
 		return (clear_game(game), R_FAIL);
-	if (mlx_image_to_window(game->mlx, game->img, 0,0) == -1)
+	if (mlx_image_to_window(game->mlx, game->img, 0, 0) == -1)
 		return (clear_game(game), R_FAIL);
 	return (R_SUCCESS);
 }
