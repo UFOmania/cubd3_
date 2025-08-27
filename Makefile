@@ -1,6 +1,7 @@
 NAME = cub
 LIBMLX = lib/libmlx42.a
 LIBFT = lib/libft.a
+FLAGS = #-fsanitize=address -g3
 
 SRCS	:= $(shell find ./src -iname "*.c")
 OBJS	:= ${SRCS:.c=.o}
@@ -8,10 +9,10 @@ OBJS	:= ${SRCS:.c=.o}
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$ cc  $(OBJS) $(LIBMLX) $(LIBFT) -lglfw -framework Cocoa -framework OpenGL -framework IOKit  -o $(NAME)
+	@$ cc $(FLAGS) $(OBJS) $(LIBMLX) $(LIBFT) -lglfw -framework Cocoa -framework OpenGL -framework IOKit  -o $(NAME)
 
 %.o: %.c
-	 cc  -o $@ -c $<  && printf "Compiling: $(notdir $<)"
+	 cc $(FLAGS) -o $@ -c $<  && printf "Compiling: $(notdir $<)"
 
 clean:
 	@rm -rf $(OBJS)

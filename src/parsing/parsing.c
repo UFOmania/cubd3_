@@ -205,19 +205,6 @@ int get_long_line_in_map(char **map)
     return (long_line);
 }
 
-static void free_map(char **map)
-{
-    int i = 0;
-    if (!map)
-        return;
-    while (map[i])
-    {
-        free(map[i]);
-        i++;
-    }
-    free(map);
-}
-
 char *copy_with_spaces(const char *src, int long_line)
 {
     int len;

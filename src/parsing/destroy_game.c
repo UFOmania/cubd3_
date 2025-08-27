@@ -1,5 +1,18 @@
 #include "../../include/parsing.h"
 
+void free_map(char **map)
+{
+    int i = 0;
+    if (!map)
+        return;
+    while (map[i])
+    {
+        free(map[i]);
+        i++;
+    }
+    free(map);
+}
+
 void free_map_mg(t_map_mg *game_mg)
 {
     int i;
@@ -14,20 +27,6 @@ void free_map_mg(t_map_mg *game_mg)
         free(game_mg->west);
     if (game_mg->east)
         free(game_mg->east);
-    if (game_mg->maps)
-    {
-        i = 0;
-        if (!*game_mg->maps)
-        {
-            while(game_mg->maps[i] != NULL)
-            {   
-                free(game_mg->maps[i]);
-                i++;
-            }
-        }
-        free(game_mg->maps);
-		game_mg->maps = NULL;
-    }
-	free(game_mg->maps);
+    free_map(game_mg->maps);
     free(game_mg);
 }

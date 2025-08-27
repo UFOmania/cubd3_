@@ -102,6 +102,7 @@ void prin_deb(t_map_mg *game_mg)
 	printf("EA: %s\n", game_mg->east);
 }
 
+
 // Checks if the map is properly enclosed by '1's, no open zeros touching spaces or edges
 int check_map_enclosure(char **map)
 {

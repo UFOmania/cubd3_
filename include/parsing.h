@@ -67,6 +67,10 @@ char    *is_valid_texture(char *line, const char *id);
 int check_map_enclosure(char **map);
 ///-----------------------------------[---------------]----------------------------------\\\\\\*
 
+
+void	free_map(char **map);
+
+
 int	display_error_file(int code, const char *target);
 int	display_error_arg(int code);
 int	display_error_input_malloc(int code, const char *target);

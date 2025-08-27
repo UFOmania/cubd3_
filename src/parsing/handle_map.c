@@ -105,7 +105,7 @@ int apply_map_ope(char *map_name , t_map_mg *game_mg )
 		return 1;
 	}
 	if (check_map_enclosure(game_mg->maps))
-	{	
+	{
 		free_map_mg(game_mg);
 		return 1;
 	}

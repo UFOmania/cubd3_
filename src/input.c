@@ -104,5 +104,5 @@ void close_game( void *param)
 	t_game *game;
 
 	game = (t_game *)param;
-	mlx_close_window(game->mlx);
+	clear_game(game);
 }

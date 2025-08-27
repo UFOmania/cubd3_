@@ -82,4 +82,6 @@ double	deg_to_rad(double deg);
 double	normilize_angle(double angle);
 int		get_rgba(int r, int g, int b, int a);
 double	distance(t_vec2 a, t_vec2 b);
+
+void	clear_game(t_game *game);
 #endif

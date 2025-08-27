@@ -24,10 +24,10 @@ void f(){system("leaks -q cub");}
 
 int main(int ac, char **av)
 {
-	// atexit(f);
+	atexit(f);
 	t_game game;
 
-
+	game = (t_game){0};
 	game.mlx = mlx_init(WIDTH, HEIGHT, "new cub", 0);  
 	if (!game.mlx)
 		return (mlx_strerror(mlx_errno), EXIT_FAILURE);
