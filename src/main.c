@@ -24,7 +24,7 @@ void f(){system("leaks -q cub");}
 
 int main(int ac, char **av)
 {
-	atexit(f);
+	//atexit(f);
 	t_game game;
 
 	game = (t_game){0};

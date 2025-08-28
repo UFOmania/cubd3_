@@ -1,44 +1,5 @@
 #include "../../include/parsing.h"
 
-// #include "errors.h"
-
-static void putstr_fd(const char *s, int fd)
-{
-    if (!s)
-        return;
-    while (*s)
-        write(fd, s++, 1);
-    write(fd, "\n", 1);
-}
-
-void print_error(const char *msg)
-{
-    putstr_fd(msg, 2);
-}
-
-void print_error2(const char *msg, const char *detail)
-{
-    putstr_fd(msg, 2);
-    putstr_fd(detail, 2);
-}
-
-int	display_error_direction(int code)
-{
-	if (code == ERR_DUPLICATE_NO)
-		print_error("Error: Duplicate NO\n");
-	else if (code == ERR_DUPLICATE_SO)
-		print_error("Error: Duplicate SO\n");
-	else if (code == ERR_DUPLICATE_WE)
-		print_error("Error: Duplicate WE\n");
-	else if (code == ERR_DUPLICATE_EA)
-		print_error("Error: Duplicate EA\n");
-	else if (code == ERR_INVALID_ID)
-		print_error("Error: invalid texture identifier\n");
-	else
-		return (0);
-	return (1);
-}
-
 int	display_error_color(int code)
 {
 	if (code == ERR_DUPLICATE_FLOOR_COLOR)

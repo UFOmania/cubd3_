@@ -1,0 +1,41 @@
+#include "../../include/parsing.h"
+
+bool ispossible_characters(char c)
+{
+	return (c == ' ' || c == '1' || c == '0' || 
+			c == '\n' || c == 'N' || c == 'S' || 
+			c == 'E' || c == 'W' );
+}
+
+bool is_has_space_one_zero(char *line)
+{
+	int i;
+
+	if (!line || !*line)
+		return (false);
+	i = 0;
+	
+	while (line[i] != '\0')
+	{
+		if (!ispossible_characters(line[i]))
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
+bool validate_game_mg(t_map_mg *game_mg)
+{
+	if (!game_mg->north || !game_mg->south || !game_mg->west || !game_mg->east)
+		return (false);
+	if (game_mg->floor_color == -1 || game_mg->ceiling_color == -1)
+		return false;
+	return (true);
+}
+
+bool is_valid_config_count(t_map_mg *game_mg)
+{
+	if (game_mg->parsed_flags[5] != 1)
+		return (false);
+	return (true);
+}

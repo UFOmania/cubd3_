@@ -86,7 +86,7 @@ int	analyze_map(t_game *game, char *map_name)
 	t_map_mg	*mg;
 
 	mg = malloc(sizeof(t_map_mg));
-	if (!mg)
+	if (mg)
 		return (display_error_input_malloc(ERR_MALLOC_FAILED, R_FAIL));
 	if (init_map_mg(mg))
 		return (fprintf(stderr, "Error processing map\n"), R_FAIL);
