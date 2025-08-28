@@ -1,7 +1,7 @@
-NO texture/door.png
-SO texture/door.png
-WE texture/door.png
-EA texture/door.png
+NO texture/a.png
+SO texture/b.png
+WE texture/c.png
+EA texture/download.png
 
 
 F   50,60,1

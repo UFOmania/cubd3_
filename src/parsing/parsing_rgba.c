@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/28 11:36:32 by massrayb          #+#    #+#             */
-/*   Updated: 2025/08/28 11:36:34 by massrayb         ###   ########.fr       */
+/*   Created: 2025/08/28 20:44:42 by massrayb          #+#    #+#             */
+/*   Updated: 2025/08/28 20:44:50 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,32 +31,48 @@ int	parse_rgb_component(const char *str)
 	return (value);
 }
 
-static int	extract_rgb_components(const char *str, int *r, int *g, int *b)
+static void	assign_rgb_value(int channel, int value, t_parsing_rgba *rgba)
+{
+	if (channel == 0)
+		rgba->r = value;
+	else if (channel == 1)
+		rgba->g = value;
+	else if (channel == 2)
+		rgba->b = value;
+}
+
+static int	read_component(const char *str, int *i, int channel,
+		t_parsing_rgba *rgba)
+{
+	int	value;
+
+	value = parse_rgb_component(str + *i);
+	if (value < 0 || value > 255)
+		return (-1);
+	assign_rgb_value(channel, value, rgba);
+	while (ft_isdigit((unsigned char)str[*i]))
+		(*i)++;
+	return (0);
+}
+
+static int	extract_rgb_components(const char *str, t_parsing_rgba *rgba)
 {
 	int	channel;
-	int	value;
 	int	i;
 	int	spe;
 
-	(1) && (i = 0, channel = 0, spe = 0);
+	channel = 0;
+	i = 0;
+	spe = 0;
 	while (str[i])
 	{
 		if (!ft_isdigit((unsigned char)str[i]))
 			spe++;
 		if (ft_isdigit((unsigned char)str[i]))
 		{
-			value = parse_rgb_component(str + i);
-			if (value < 0 || value > 255)
+			if (read_component(str, &i, channel, rgba) == -1)
 				return (-1);
-			if (channel == 0)
-				*r = value;
-			else if (channel == 1)
-				*g = value;
-			else if (channel == 2)
-				*b = value;
 			channel++;
-			while (ft_isdigit((unsigned char)str[i]))
-				i++;
 		}
 		else
 			i++;
@@ -68,19 +84,16 @@ static int	extract_rgb_components(const char *str, int *r, int *g, int *b)
 
 int	rgb_string_to_int(const char *color_str)
 {
-	int	r;
-	int	g;
-	int	b;
-	int	i;
+	t_parsing_rgba	rgba;
 
 	if (!color_str)
 		return (-1);
-	i = 0;
+	rgba.i = 0;
 	if (color_str[0] == 'F' || color_str[0] == 'C')
-		i++;
-	while (color_str[i] && color_str[i] == ' ')
-		i++;
-	if (extract_rgb_components(color_str + i, &r, &g, &b) == -1)
+		rgba.i++;
+	while (color_str[rgba.i] && color_str[rgba.i] == ' ')
+		rgba.i++;
+	if (extract_rgb_components(color_str + rgba.i, &rgba) == -1)
 		return (-1);
-	return ((r << 24) | (g << 16) | (b << 8) | 255);
+	return ((rgba.r << 24) | (rgba.g << 16) | (rgba.b << 8) | 255);
 }

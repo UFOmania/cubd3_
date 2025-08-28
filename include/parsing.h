@@ -43,9 +43,15 @@ typedef struct s_map_mg
 	char	player_seen;
     int     player_pos[2];
     int     player_count;
-    int     parsed_flags[12]; // 0=NO, 1=SO, 2=WE, 3=EA, 4=F, 5=C
+    int     parsed_flags[12];
 } t_map_mg;
-
+typedef struct s_parsing_rgba
+{
+	int r;
+	int g;
+	int b;
+	int i;
+}   t_parsing_rgba;
 int is_valid_arg(char *map_name);
 bool is_has_space_one_zero(char *line);
 int rgb_string_to_int(const char *color_str);
