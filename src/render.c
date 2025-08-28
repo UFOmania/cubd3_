@@ -6,7 +6,7 @@
 /*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:37 by massrayb          #+#    #+#             */
-/*   Updated: 2025/08/28 13:04:16 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:32:17 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static void	render_walls(t_game *game, t_raycast_args *a)
 {
 	int			tex_pos_on_wall;
 	int			color;
-	int			side;
 	mlx_image_t	*texture;
 
 	texture = game->texture[a->ray.tex_hit_side];
