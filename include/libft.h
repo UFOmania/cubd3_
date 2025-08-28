@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:16:27 by ybassour          #+#    #+#             */
-/*   Updated: 2025/08/20 11:10:08 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/08/28 13:08:03 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *b, size_t n);
 
 void	*ft_calloc(size_t n, size_t size);
-
 
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);

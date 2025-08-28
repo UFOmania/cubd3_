@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cast_ray.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/28 12:48:40 by massrayb          #+#    #+#             */
+/*   Updated: 2025/08/28 12:48:41 by massrayb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub.h"
 
 static t_vec2	get_h_intercept(t_vec2 pos, double angle)
@@ -68,8 +80,8 @@ static int	is_wall(char **map, t_vec2 pos, t_ray *ray)
 
 	x = pos.x / TILE_SIZE;
 	y = pos.y / TILE_SIZE;
-	if (map[y][x] != '0')
-		return (ray->type = map[y][x], 1);
+	if (map[y][x] == '1')
+		return (1);
 	return (0);
 }
 

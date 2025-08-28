@@ -1,7 +1,7 @@
 NAME = cub
 LIBMLX = lib/libmlx42.a
 LIBFT = lib/libft.a
-FLAGS = #-fsanitize=address -g3
+FLAGS = -fsanitize=address -g3
 
 SRCS	:= $(shell find ./src -iname "*.c")
 OBJS	:= ${SRCS:.c=.o}

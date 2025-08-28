@@ -1,43 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_error.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/28 11:09:45 by massrayb          #+#    #+#             */
+/*   Updated: 2025/08/28 11:10:43 by massrayb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/parsing.h"
-
-// #include "errors.h"
-
-static void putstr_fd(const char *s, int fd)
-{
-    if (!s)
-        return;
-    while (*s)
-        write(fd, s++, 1);
-    write(fd, "\n", 1);
-}
-
-void print_error(const char *msg)
-{
-    putstr_fd(msg, 2);
-}
-
-void print_error2(const char *msg, const char *detail)
-{
-    putstr_fd(msg, 2);
-    putstr_fd(detail, 2);
-}
-
-int	display_error_direction(int code)
-{
-	if (code == ERR_DUPLICATE_NO)
-		print_error("Error: Duplicate NO\n");
-	else if (code == ERR_DUPLICATE_SO)
-		print_error("Error: Duplicate SO\n");
-	else if (code == ERR_DUPLICATE_WE)
-		print_error("Error: Duplicate WE\n");
-	else if (code == ERR_DUPLICATE_EA)
-		print_error("Error: Duplicate EA\n");
-	else if (code == ERR_INVALID_ID)
-		print_error("Error: invalid texture identifier\n");
-	else
-		return (0);
-	return (1);
-}
 
 int	display_error_color(int code)
 {
@@ -68,7 +41,6 @@ int	display_error_input_malloc(int code, const char *target)
 	return (1);
 }
 
-
 int	display_error_arg(int code)
 {
 	if (code == ERR_EXPECTED_ONE_ARG)
@@ -83,17 +55,17 @@ int	display_error_arg(int code)
 int	display_error_file(int code, const char *target)
 {
 	if (code == ERR_CANNOT_OPEN_FILE)
-		print_error2( "Error: cannot open file '%s'\n", target);
+		print_error2("Error: cannot open file '%s'\n", target);
 	else if (code == ERR_FILE_OPEN_FAILED)
-		print_error2( "Error: cannot open texture file '%s'\n", target);
+		print_error2("Error: cannot open texture file '%s'\n", target);
 	else if (code == ERR_NULL_MAP_NAME)
-		print_error( "Error: null map name\n");
+		print_error("Error: null map name\n");
 	else if (code == ERR_INVALID_MAP_SIZE)
-		print_error( "Error: invalid map size\n");
+		print_error("Error: invalid map size\n");
 	else if (code == ERR_INVALID_MAP_CONFIG)
-		print_error( "Error: invalid map configuration\n");
+		print_error("Error: invalid map configuration\n");
 	else if (code == ERR_PROCESSING_MAP)
-		print_error( "Error: processing map failed\n");
+		print_error("Error: processing map failed\n");
 	else
 		return (0);
 	return (1);

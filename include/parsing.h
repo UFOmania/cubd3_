@@ -60,7 +60,7 @@ int init_map_mg(t_map_mg *game_mg);
 int parse_line(t_map_mg *game_mg, char *line, int *i);
 int is_valid_map(t_map_mg *game_mg);
 int replace_map(t_map_mg *game_mg);
-int find_player_position(t_map_mg *game_mg);
+int check_player_in_map(t_map_mg *game_mg);
 int apply_map_ope(char *map_name, t_map_mg *game_mg);
 ///-----------------------------------[  validation ]----------------------------------\\\\\\*
 char    *is_valid_texture(char *line, const char *id);
@@ -69,8 +69,10 @@ int check_map_enclosure(char **map);
 
 
 void	free_map(char **map);
-
-
+void putstr_fd(const char *s, int fd);
+void print_error(const char *msg);
+void print_error2(const char *msg, const char *detail);
+int	display_error_direction(int code);
 int	display_error_file(int code, const char *target);
 int	display_error_arg(int code);
 int	display_error_input_malloc(int code, const char *target);
@@ -78,4 +80,5 @@ int	display_error_color(int code);
 int	display_error_direction(int code);
 void print_error2(const char *msg, const char *detail);
 void print_error(const char *msg);
+int parse_map_or_error(t_map_mg *game_mg, char *line, int *i);
 #endif

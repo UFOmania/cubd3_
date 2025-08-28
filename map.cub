@@ -1,11 +1,11 @@
-NO texture/download.png
-SO texture/images.png
+NO texture/door.png
+SO texture/door.png
 WE texture/door.png
-EA texture/pris.png
+EA texture/door.png
 
 
-F   220,100,0
-C   225,30,0
+F   50,60,77
+C   7,16,46
 
 
 111111111111111111111111111111111111111111111111111

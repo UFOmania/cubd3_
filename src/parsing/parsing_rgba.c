@@ -1,0 +1,86 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_rgba.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/28 11:36:32 by massrayb          #+#    #+#             */
+/*   Updated: 2025/08/28 11:36:34 by massrayb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../include/parsing.h"
+
+int	parse_rgb_component(const char *str)
+{
+	int	value;
+	int	i;
+
+	if (!str || !*str || str[0] == '-')
+		return (-1);
+	value = 0;
+	i = 0;
+	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
+	{
+		value = value * 10 + (str[i] - '0');
+		if (value > 255)
+			return (-1);
+		i++;
+	}
+	return (value);
+}
+
+static int	extract_rgb_components(const char *str, int *r, int *g, int *b)
+{
+	int	channel;
+	int	value;
+	int	i;
+	int	spe;
+
+	(1) && (i = 0, channel = 0, spe = 0);
+	while (str[i])
+	{
+		if (!ft_isdigit((unsigned char)str[i]))
+			spe++;
+		if (ft_isdigit((unsigned char)str[i]))
+		{
+			value = parse_rgb_component(str + i);
+			if (value < 0 || value > 255)
+				return (-1);
+			if (channel == 0)
+				*r = value;
+			else if (channel == 1)
+				*g = value;
+			else if (channel == 2)
+				*b = value;
+			channel++;
+			while (ft_isdigit((unsigned char)str[i]))
+				i++;
+		}
+		else
+			i++;
+	}
+	if (channel != 3 || spe != 3)
+		return (-1);
+	return (0);
+}
+
+int	rgb_string_to_int(const char *color_str)
+{
+	int	r;
+	int	g;
+	int	b;
+	int	i;
+
+	if (!color_str)
+		return (-1);
+	i = 0;
+	if (color_str[0] == 'F' || color_str[0] == 'C')
+		i++;
+	while (color_str[i] && color_str[i] == ' ')
+		i++;
+	if (extract_rgb_components(color_str + i, &r, &g, &b) == -1)
+		return (-1);
+	return ((r << 24) | (g << 16) | (b << 8) | 255);
+}

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycast.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/28 12:49:33 by massrayb          #+#    #+#             */
+/*   Updated: 2025/08/28 13:04:16 by massrayb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub.h"
 
 static void	get_wall_height_and_margen(t_game *game, t_raycast_args *args)
@@ -45,7 +57,7 @@ void	raycast(t_game *game)
 		args.ray = cast_ray(game, game->player.pos, ray_angle);
 		args.ray.len = distance(game->player.pos, args.ray.hit_pos) * \
 		cos(ray_angle - game->player.angle);
-		args.xOnScreen = x;
+		args.x_on_screen = x;
 		get_texture_x(game, &args);
 		get_wall_height_and_margen(game, &args);
 		do_render(game, &args);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/28 12:49:23 by massrayb          #+#    #+#             */
+/*   Updated: 2025/08/28 12:59:32 by massrayb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub.h"
 
 void	lanch_engine(t_game *game)
@@ -8,16 +20,10 @@ void	lanch_engine(t_game *game)
 	mlx_loop(game->mlx);
 }
 
-void	f(void)
-{
-	system("leaks -q cub");
-}
-
 int	main(int ac, char **av)
 {
 	t_game	game;
 
-	atexit(f);
 	game = (t_game){0};
 	game.mlx = mlx_init(WIDTH, HEIGHT, "cub3d", 0);
 	if (!game.mlx)

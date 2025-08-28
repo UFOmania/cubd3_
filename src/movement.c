@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   movement.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/28 12:49:27 by massrayb          #+#    #+#             */
+/*   Updated: 2025/08/28 12:58:59 by massrayb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub.h"
 
 static int	is_wall(char **map, double x, double y)
@@ -47,10 +59,10 @@ void	apply_inputs(t_player *player, char **map)
 	angle = player->angle;
 	right = player->go_right;
 	up = player->go_up;
-	new_pos.x = pos.x + (((cos(angle) * up) + (cos(angle + (M_PI / 2)) \
-	* right)) * MOVE_SPEED);
-	new_pos.y = pos.y + (((sin(angle) * up) + (sin(angle + (M_PI / 2)) \
-	* right)) * MOVE_SPEED);
+	new_pos.x = pos.x + (((cos(angle) * up) + \
+						(cos(angle + (M_PI / 2)) * right)) * MOVE_SPEED);
+	new_pos.y = pos.y + (((sin(angle) * up) + \
+						(sin(angle + (M_PI / 2)) * right)) * MOVE_SPEED);
 	player->pos = check_for_collision(map, pos, new_pos, PLAYER_RADIUS);
 	if (player->rotate_right)
 	{
