@@ -6,7 +6,7 @@
 /*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:23 by massrayb          #+#    #+#             */
-/*   Updated: 2025/08/28 12:59:32 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/08/29 20:11:29 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ int	main(int ac, char **av)
 	t_game	game;
 
 	game = (t_game){0};
-	game.mlx = mlx_init(WIDTH, HEIGHT, "cub3d", 0);
-	if (!game.mlx)
-		return (mlx_strerror(mlx_errno), EXIT_FAILURE);
 	if (ac != 2)
 		return (display_error_arg(ERR_EXPECTED_ONE_ARG));
 	if (is_valid_arg(av[1]))
 		return (display_error_arg(ERR_INVALID_ARGUMENT));
+	game.mlx = mlx_init(WIDTH, HEIGHT, "gta VI", 0);
+	if (!game.mlx)
+		return (mlx_strerror(mlx_errno), EXIT_FAILURE);
 	if (init_game(&game, av[1]) == R_FAIL)
 		return (1);
 	lanch_engine(&game);

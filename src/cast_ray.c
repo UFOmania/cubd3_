@@ -6,7 +6,7 @@
 /*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:48:40 by massrayb          #+#    #+#             */
-/*   Updated: 2025/08/28 12:48:41 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:31:14 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static t_vec2	get_the_closest(t_ray *ray, t_vec2 pos, t_vec2 v, t_vec2 h)
 	return (h);
 }
 
-static int	is_wall(char **map, t_vec2 pos, t_ray *ray)
+static int	is_wall(char **map, t_vec2 pos)
 {
 	int	x;
 	int	y;
@@ -100,7 +100,7 @@ t_ray	cast_ray(t_game *game, t_vec2 start, double angle)
 		h_intercept = get_h_intercept(pos, angle);
 		v_intercept = get_v_intercept(pos, angle);
 		closest = get_the_closest(&ray, pos, v_intercept, h_intercept);
-		if (is_wall(game->map, closest, &ray))
+		if (is_wall(game->map, closest))
 			break ;
 		else
 			pos = closest;

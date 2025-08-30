@@ -6,11 +6,28 @@
 /*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:43:11 by massrayb          #+#    #+#             */
-/*   Updated: 2025/08/30 10:36:57 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/08/30 11:30:11 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/parsing.h"
+static char	*ft_strrchr(const char *s, int c)
+{
+	int	len;
+
+	if (!s)
+		return (NULL);
+	len = 0;
+	while (s[len])
+		len++;
+	while (len >= 0)
+	{
+		if (s[len] == (char)c)
+			return ((char *)(s + len));
+		len--;
+	}
+	return (NULL);
+}
 
 int	is_valid_arg(char *map_name)
 {

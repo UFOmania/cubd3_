@@ -6,7 +6,7 @@
 /*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:33 by massrayb          #+#    #+#             */
-/*   Updated: 2025/08/28 13:04:16 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:32:10 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	get_texture_x(t_game *game, t_raycast_args *args)
 	int		tex_x;
 	int		side;
 
+	tex_x = 0;
 	side = args->ray.tex_hit_side;
 	ray = args->ray;
 	if (side == S || side == N)

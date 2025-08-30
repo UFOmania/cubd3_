@@ -1,11 +1,11 @@
-NO texture/door.png
-SO texture/door.png
-WE texture/door.png
-EA texture/door.png
+NO texture/w.png
+SO texture/s.png
+WE texture/n.png
+EA texture/e.png
 
 
-F   50,60,77
-C   7,16,46
+F   20,10,30
+C   20,0,60
 
 
 111111111111111111111111111111111111111111111111111
