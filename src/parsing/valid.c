@@ -6,7 +6,7 @@
 /*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:41:08 by massrayb          #+#    #+#             */
-/*   Updated: 2025/08/28 11:42:43 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/08/30 14:30:22 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,40 @@ bool	validate_game_mg(t_map_mg *game_mg)
 
 bool	is_valid_config_count(t_map_mg *game_mg)
 {
+	if (game_mg->parsed_flags[0] != 1)
+		return (false);
+	if (game_mg->parsed_flags[1] != 1)
+		return (false);
+	if (game_mg->parsed_flags[2] != 1)
+		return (false);
+	if (game_mg->parsed_flags[3] != 1)
+		return (false);
+	if (game_mg->parsed_flags[4] != 1)
+		return (false);
 	if (game_mg->parsed_flags[5] != 1)
 		return (false);
 	return (true);
+}
+
+int	check_player_validity(char **maps)
+{
+	int	row;
+	int	col;
+
+	if (!maps || !*maps)
+		return (1);
+	row = 0;
+	while (maps[row])
+	{
+		col = 0;
+		while (maps[row][col])
+		{
+			if (is_player_symbol(maps[row][col]) &&
+				player_adjacent_to_space(maps, row, col))
+				return (1);
+			col++;
+		}
+		row++;
+	}
+	return (0);
 }

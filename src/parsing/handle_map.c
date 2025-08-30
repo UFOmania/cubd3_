@@ -6,7 +6,7 @@
 /*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:11:09 by massrayb          #+#    #+#             */
-/*   Updated: 2025/08/28 11:30:12 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/08/30 14:30:41 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,11 +105,11 @@ int	apply_map_ope(char *map_name, t_map_mg *game_mg)
 	{
 		return (free_map_mg(game_mg), 1);
 	}
-	if (check_map_enclosure(game_mg->maps))
+	if (check_player_in_map(game_mg))
 	{
 		return (free_map_mg(game_mg), 1);
 	}
-	if (check_player_in_map(game_mg))
+	if (check_map_enclosure(game_mg->maps))
 	{
 		return (free_map_mg(game_mg), 1);
 	}

@@ -1,7 +1,7 @@
-NAME = cub
+NAME = cub3D
 LIBMLX = lib/libmlx42.a
 LIBFT = lib/libft.a
-FLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3
+FLAGS = -Wall -Wextra -Werror
 
 SRCS	:= $(shell find ./src -iname "*.c")
 OBJS	:= ${SRCS:.c=.o}

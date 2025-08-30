@@ -6,7 +6,7 @@
 /*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:23 by massrayb          #+#    #+#             */
-/*   Updated: 2025/08/29 20:11:29 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/08/30 13:22:42 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,15 @@ void	lanch_engine(t_game *game)
 	mlx_loop_hook(game->mlx, update, game);
 	mlx_loop(game->mlx);
 }
+void f()
+{
+	system("leaks -q cub");
+	system("lsof -c cub");
+}
 
 int	main(int ac, char **av)
 {
+	atexit(f);
 	t_game	game;
 
 	game = (t_game){0};

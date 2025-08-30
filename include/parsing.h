@@ -32,18 +32,18 @@
 
 typedef struct s_map_mg
 {
-    char    **maps;
-    char    *north;
-    char    *south;
-    char    *west;
-    char    *east;
+	char    **maps;
+	char    *north;
+	char    *south;
+	char    *west;
+	char    *east;
 	int		ceiling_color;
 	int		floor_color;
-    int     map_hi;
+	int     map_hi;
 	char	player_seen;
-    int     player_pos[2];
-    int     player_count;
-    int     parsed_flags[12];
+	int     player_pos[2];
+	int     player_count;
+	int     parsed_flags[12];
 } t_map_mg;
 typedef struct s_parsing_rgba
 {
@@ -87,4 +87,7 @@ int	display_error_direction(int code);
 void print_error2(const char *msg, const char *detail);
 void print_error(const char *msg);
 int parse_map_or_error(t_map_mg *game_mg, char *line, int *i);
+int	check_player_validity(char **maps);
+int	player_adjacent_to_space(char **maps, int row, int col);
+int	is_player_symbol(char c);
 #endif
