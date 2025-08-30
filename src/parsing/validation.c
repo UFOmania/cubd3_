@@ -6,20 +6,38 @@
 /*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:43:11 by massrayb          #+#    #+#             */
-/*   Updated: 2025/08/28 11:44:29 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/08/30 15:31:21 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/parsing.h"
 
+static char	*ft_strrchr(const char *s, int c)
+{
+	int	len;
+
+	if (!s)
+		return (NULL);
+	len = 0;
+	while (s[len])
+		len++;
+	while (len >= 0)
+	{
+		if (s[len] == (char)c)
+			return ((char *)(s + len));
+		len--;
+	}
+	return (NULL);
+}
+
 int	is_valid_arg(char *map_name)
 {
 	char	*map_exction;
 
-	map_exction = strrchr(map_name, '.');
+	map_exction = ft_strrchr(map_name, '.');
 	if (!map_exction)
 		return (1);
-	if (strcmp(map_exction, ".cub") == 0)
+	if (ft_strcmp(map_exction, ".cub") == 0)
 		return (0);
 	return (1);
 }

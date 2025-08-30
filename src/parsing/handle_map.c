@@ -6,7 +6,7 @@
 /*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:11:09 by massrayb          #+#    #+#             */
-/*   Updated: 2025/08/30 14:30:41 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/08/30 15:36:15 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ int	open_map(char *map_name, t_map_mg *game_mg)
 	game_mg->map_hi = size;
 	if (!map_name)
 		return (display_error_file(ERR_NULL_MAP_NAME, NULL));
+	if (size == -1)
+		return (1);
 	if (size <= 0)
 		return (display_error_file(ERR_INVALID_MAP_SIZE, NULL), 1);
 	fd = open(map_name, O_RDONLY);

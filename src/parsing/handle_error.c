@@ -6,7 +6,7 @@
 /*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:09:45 by massrayb          #+#    #+#             */
-/*   Updated: 2025/08/28 11:10:43 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/08/30 15:37:59 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ int	display_error_arg(int code)
 int	display_error_file(int code, const char *target)
 {
 	if (code == ERR_CANNOT_OPEN_FILE)
-		print_error2("Error: cannot open file '%s'\n", target);
+		print_error2("Error: cannot open file ", target);
 	else if (code == ERR_FILE_OPEN_FAILED)
-		print_error2("Error: cannot open texture file '%s'\n", target);
+		print_error2("Error: cannot open texture file ", target);
 	else if (code == ERR_NULL_MAP_NAME)
 		print_error("Error: null map name\n");
 	else if (code == ERR_INVALID_MAP_SIZE)

@@ -6,30 +6,31 @@
 /*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:05:31 by massrayb          #+#    #+#             */
-/*   Updated: 2025/08/28 11:07:45 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/08/30 15:39:26 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/parsing.h"
 
-void	putstr_fd(const char *s, int fd)
+void	putstr_fd(const char *s, int fd, int boolean)
 {
 	if (!s)
 		return ;
 	while (*s)
 		write(fd, s++, 1);
-	write(fd, "\n", 1);
+	if (boolean)
+		write(fd, "\n", 1);
 }
 
 void	print_error(const char *msg)
 {
-	putstr_fd(msg, 2);
+	putstr_fd(msg, 2, 1);
 }
 
 void	print_error2(const char *msg, const char *detail)
 {
-	putstr_fd(msg, 2);
-	putstr_fd(detail, 2);
+	putstr_fd(msg, 2, 0);
+	putstr_fd(detail, 2, 1);
 }
 
 int	display_error_direction(int code)
