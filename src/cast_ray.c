@@ -22,7 +22,7 @@ static t_vec2	get_h_intercept(t_vec2 pos, double angle)
 		if (sin(angle) > 0)
 			h_intercept.y = (floor(pos.y / TILE_SIZE) * TILE_SIZE) + TILE_SIZE;
 		else
-			h_intercept.y = floor(pos.y / TILE_SIZE) * TILE_SIZE - 0.00001;
+			h_intercept.y = (floor(pos.y / TILE_SIZE) * TILE_SIZE) - 0.00001;
 		h_intercept.x = pos.x + ((h_intercept.y - pos.y) / tan(angle));
 	}
 	return (h_intercept);
@@ -38,7 +38,7 @@ static t_vec2	get_v_intercept(t_vec2 pos, double angle)
 		if (cos(angle) > 0)
 			v_intercept.x = (floor(pos.x / TILE_SIZE) * TILE_SIZE) + TILE_SIZE;
 		else
-			v_intercept.x = floor(pos.x / TILE_SIZE) * TILE_SIZE - 0.00001;
+			v_intercept.x = (floor(pos.x / TILE_SIZE) * TILE_SIZE) - 0.00001;
 		v_intercept.y = pos.y + ((v_intercept.x - pos.x) * tan(angle));
 	}
 	return (v_intercept);
@@ -53,9 +53,9 @@ static t_vec2	get_the_closest(t_ray *ray, t_vec2 pos, t_vec2 v, t_vec2 h)
 	dv = INFINITY;
 	dh = INFINITY;
 	if (v.x != INFINITY)
-		dv = (v.x - pos.x) / cos(ray->ray_angle);
+		dv = fabs(v.x - pos.x) / fabs(cos(ray->ray_angle));
 	if (h.y != INFINITY)
-		dh = (h.y - pos.y) / sin(ray->ray_angle);
+		dh = fabs(h.y - pos.y) / fabs(sin(ray->ray_angle));
 	if (dv < dh)
 		side = VERTICAL;
 	else
@@ -71,6 +71,7 @@ static t_vec2	get_the_closest(t_ray *ray, t_vec2 pos, t_vec2 v, t_vec2 h)
 	if (side == VERTICAL)
 		return (v);
 	return (h);
+	char *i = (void *)0;
 }
 
 static int	is_wall(char **map, t_vec2 pos)
