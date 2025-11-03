@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cast_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:48:40 by massrayb          #+#    #+#             */
-/*   Updated: 2025/08/28 19:31:14 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/03 10:02:23 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_vec2	get_h_intercept(t_vec2 pos, double angle)
 	t_vec2	h_intercept;
 
 	h_intercept = (t_vec2){INFINITY, INFINITY};
-	if (fabs(sin(angle)) > 0.0000001)
+	if (fabs(sin(angle)) > 0.001)
 	{
 		if (sin(angle) > 0)
 			h_intercept.y = (floor(pos.y / TILE_SIZE) * TILE_SIZE) + TILE_SIZE;
@@ -33,7 +33,7 @@ static t_vec2	get_v_intercept(t_vec2 pos, double angle)
 	t_vec2	v_intercept;
 
 	v_intercept = (t_vec2){INFINITY, INFINITY};
-	if (fabs(cos(angle)) > 0.0000001)
+	if (fabs(cos(angle)) > 0.001)
 	{
 		if (cos(angle) > 0)
 			v_intercept.x = (floor(pos.x / TILE_SIZE) * TILE_SIZE) + TILE_SIZE;

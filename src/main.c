@@ -6,13 +6,13 @@
 /*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:23 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/03 08:47:26 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/03 09:13:32 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
 
-void	lanch_engine(t_game *game)
+static void	launch_engine(t_game *game)
 {
 	mlx_close_hook(game->mlx, close_game, game);
 	mlx_key_hook(game->mlx, input, game);
@@ -34,5 +34,5 @@ int	main(int ac, char **av)
 		return (mlx_strerror(mlx_errno), EXIT_FAILURE);
 	if (init_game(&game, av[1]) == R_FAIL)
 		return (1);
-	lanch_engine(&game);
+	launch_engine(&game);
 }
