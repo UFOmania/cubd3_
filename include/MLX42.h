@@ -15,11 +15,6 @@
 # include <stddef.h>
 # include <stdint.h>
 # include <stdbool.h>
-# ifdef __cplusplus
-extern
-"C" 
-{
-# endif
 
 typedef enum action
 {
@@ -342,7 +337,4 @@ mlx_image_t*			mlx_put_string(mlx_t* mlx, const char* str, \
 							int32_t x, int32_t y);
 const mlx_texture_t*	mlx_get_font(void);
 int32_t					mlx_get_texoffset(char c);
-# ifdef __cplusplus
-}
-# endif
 #endif

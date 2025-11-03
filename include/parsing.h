@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 10:59:46 by ybassour          #+#    #+#             */
-/*   Updated: 2025/08/30 15:41:02 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/03 08:45:07 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <stdbool.h>
-# include "libft.h"
+# include "libft/libft.h"
 
 # define ERR_MALLOC_FAILED            1
 # define ERR_CANNOT_OPEN_FILE         2

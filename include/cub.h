@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:45 by massrayb          #+#    #+#             */
-/*   Updated: 2025/08/28 13:05:25 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/03 08:44:46 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,18 @@
 
 # include <stdio.h>
 # include <math.h>
-
 # include "MLX42.h"
 # include "parsing.h"
-# include "libft.h"
-# include <time.h>
+# include "libft/libft.h"
 
 # define R_FAIL 0
 # define R_SUCCESS 1
 
-# define WIDTH 800.0
-# define HEIGHT 600.0
-# define FOV 50.0
+# define WIDTH 1280.0
+# define HEIGHT 720.0
+# define FOV 66.0
 # define TILE_SIZE 100.0
-# define MOVE_SPEED 10.0
+# define MOVE_SPEED 8.0
 # define PLAYER_RADIUS 15.0
 # define ROT_SPEED 0.1
 

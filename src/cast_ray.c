@@ -71,7 +71,6 @@ static t_vec2	get_the_closest(t_ray *ray, t_vec2 pos, t_vec2 v, t_vec2 h)
 	if (side == VERTICAL)
 		return (v);
 	return (h);
-	char *i = (void *)0;
 }
 
 static int	is_wall(char **map, t_vec2 pos)

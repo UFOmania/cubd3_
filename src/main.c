@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: massrayb <massrayb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:23 by massrayb          #+#    #+#             */
-/*   Updated: 2025/08/30 13:22:42 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/03 08:47:26 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,9 @@ void	lanch_engine(t_game *game)
 	mlx_loop_hook(game->mlx, update, game);
 	mlx_loop(game->mlx);
 }
-void f()
-{
-	system("leaks -q cub");
-	system("lsof -c cub");
-}
 
 int	main(int ac, char **av)
 {
-	atexit(f);
 	t_game	game;
 
 	game = (t_game){0};
@@ -35,7 +29,7 @@ int	main(int ac, char **av)
 		return (display_error_arg(ERR_EXPECTED_ONE_ARG));
 	if (is_valid_arg(av[1]))
 		return (display_error_arg(ERR_INVALID_ARGUMENT));
-	game.mlx = mlx_init(WIDTH, HEIGHT, "gta VI", 0);
+	game.mlx = mlx_init(WIDTH, HEIGHT, "cub3D", 0);
 	if (!game.mlx)
 		return (mlx_strerror(mlx_errno), EXIT_FAILURE);
 	if (init_game(&game, av[1]) == R_FAIL)
