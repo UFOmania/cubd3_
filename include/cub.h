@@ -6,7 +6,7 @@
 /*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:45 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/03 08:44:46 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/03 13:38:41 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdio.h>
 # include <math.h>
-# include "MLX42.h"
+# include ".MLX42.h"
 # include "parsing.h"
 # include "libft/libft.h"
 

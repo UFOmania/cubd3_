@@ -40,8 +40,7 @@ _libft:
 	make -C ./libft
 
 $(NAME): $(OBJS)
-	cc -c malloc.c -o malloc.o
-	cc $(FLAGS) $(OBJS) $(LIBMLX) $(LIBFT) -lglfw -framework Cocoa -framework OpenGL -framework IOKit malloc.o -o $(NAME)
+	cc $(FLAGS) $(OBJS) $(LIBMLX) $(LIBFT) -lglfw -framework Cocoa -framework OpenGL -framework IOKit -o $(NAME)
 
 %.o: %.c include/cub.h include/parsing.h libft/libft.h $(LIBFT)
 	cc $(FLAGS) -o $@ -c $< 
