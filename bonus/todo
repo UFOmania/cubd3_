@@ -1,0 +1,300 @@
+try to include character that not in your map but all map vlid
+
+
+NO texture/w.png
+SO texture/s.png
+WE texture/n.png
+EA texture/e.pngd
+F 0,0,0
+C 0,0,0
+هل ترغب أن أشرح لك كيف نحسب النقطة الدقيقة داخل الباب لاختيار الجزء الصحيح من الصورة (texture mapping)؟
+لأن هذا هو الجزء الذي يجعل الباب يبدو حقيقيًا عند النظر إليه من زوايا مختلفة.
+
+
+هل ترغب أن أشرح لك كيف تُحسب النقطة الدقيقة داخل الباب (عندما يكون نصف مفتوح مثلًا)؟
+هذه الخطوة مهمة إذا كنت تريد الأبواب تتحرك أو تُفتح تدريجيًا في الرسم.
+
+هل ترغب أن أشرح كيف يُحسب موضع الباب بالضبط أثناء الفتح (Door offset in X/Y) — أي الحركة الرياضية عندما يكون الباب بين خليتين؟
+لأن هذه هي الخطوة التي تجعل الباب يبدو واقعيًا جدًا في اللعبة.
+
+
+هل ترغب أن أشرح الآن كيف نحدد الباب أفقي أم عمودي (أي هل يتحرك على محور X أو Y عند الفتح)؟
+لأن هذه الخطوة مهمة جدًا لتحديد اتجاه حركة الباب داخل الممر
+1111111111
+1000000001
+1011111101
+1010000101
+1010110101
+1000E0001
+1111111111
+
+minimap size 60*60
+8*8 and player posistion 1 = 9
+
+
+char *mapp[] = {
+    "1111111111111111111111",
+    "10000000000000000D00p1",
+    "10111011101110111D1101",
+    "1001000100010001000101",
+    "1011001100110011010101",
+    "1000000000000000010101",
+    "1001000100010001000101",
+    "1011001100110011010101",
+    "1000000000000000010101",
+    "1001000100010001000101",
+    "1011001100110011010101",
+    "1000000000000000010101",
+    "111101110111011101D101",
+    "1000000000000000000N01",
+    "1011101110111011111101",
+    "1111111111111111111111",
+    NULL
+};\
+
+La triple règle
+
+what game loop 
+what is  rendering 
+
+check if the door is close
+
+
+NO texture/w.png
+SO texture/s.png
+WE texture/n.png
+EA texture/e.png
+F 0,0,0
+C 0,0,0
+
+1111111111
+    1111W11111
+        1
+11111111111
+    11110W011111
+       1111
+
+
+1111111111111
+    111100011
+    11110W011111
+       1111
+
+
+
+| Step                | Formula                                                                          | Meaning                      |
+| ------------------- | -------------------------------------------------------------------------------- | ---------------------------- |
+| Projection distance | ((WIDTH/2) / (tan(FOV/2)))                                                       | Distance to projection plane |
+| Corrected distance  | (dist * cos(ray_angle - player_angle  ) )                                        | Removes fisheye              |
+| Column height       | ((TILE_SIZE * proj_plane_dist ) /corrected_dist )                                | Perspective scaling          |
+| Start of wall       | ((H /2 ) - (column_height /2))                                                   | Top of slice                 |
+| End of wall         | (start + column_height )                                                         | Bottom of slice              |
+| Door open amount    | (1 - offset)                                                                     | Fraction visible             |
+| Shift upward        | ((column_height * offset) / 2)                                                   | Simulates vertical motion    |
+
+
+radians=degrees×180/π​
+
+
+leaks on hits door
+
+
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==67329==ERROR: AddressSanitizer: SEGV on unknown address 0x00000000003b (pc 0x000107f22af4 bp 0x7ffee7cdc2b0 sp 0x7ffee7cdc150 T0)
+==67329==The signal is caused by a READ memory access.
+==67329==Hint: address points to the zero page.
+    #0 0x107f22af4 in cast_ray_collect_doors ft_door.c:65
+    #1 0x107f241e0 in ft_raycast_doors ft_door.c:156
+    #2 0x107f38043 in update update.c:52
+    #3 0x107f39c25 in mlx_loop+0x125 (cub3D:x86_64+0x10001bc25)
+    #4 0x107f285a6 in lanch_engine main.c:32
+    #5 0x107f2898b in main main.c:57
+    #6 0x7fff6ff1ccc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+==67329==Register values:
+rax = 0x000000000000003b  rbx = 0x00007ffee7ce0ee0  rcx = 0x000000000000003b  rdx = 0x0000100000000007  
+rdi = 0x0000607000028f00  rsi = 0x0000100000000000  rbp = 0x00007ffee7cdc2b0  rsp = 0x00007ffee7cdc150  
+ r8 = 0x0000100000000000   r9 = 0x8000000000000000  r10 = 0x4040000000000000  r11 = 0x4049a88600000000  
+r12 = 0x0000000107f5d478  r13 = 0x000060300002b9c0  r14 = 0x000000010ffbd800  r15 = 0x0000000000000000  
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV ft_door.c:65 in cast_ray_collect_doors
+==67329==ABORTING
+zsh: abort      ./cub3D maps/map.cub
+ybassour@e3r10p3 for_push % make re && ./cub3D maps/map.cub && make clean
+cc -Wall -Wextra -Werror -fsanitize=address -g3 -o src/cast_ray.o -c src/cast_ray.c  && printf "Compiling: cast_ray.c\n"
+Compiling: cast_ray.c
+cc -Wall -Wextra -Werror -fsanitize=address -g3 -o src/clear_game.o -c src/clear_game.c  && printf "Compiling: clear_game.c\n"
+Compiling: clear_game.c
+cc -Wall -Wextra -Werror -fsanitize=address -g3 -o src/deg_to_rad.o -c src/deg_to_rad.c  && printf "Compiling: deg_to_rad.c\n"
+Compiling: deg_to_rad.c
+
+
+#include "../../../include/cub_bonus.h"
+
+int check_door_orientation(char **map, int x, int y)
+{
+    if (y <= 0 || x <= 0)
+        return 0;
+
+    if (map[y - 1][x] == '1' && map[y + 1][x] == '1')
+        return 1;
+    if (map[y][x - 1] == '1' && map[y][x + 1] == '1')
+        return 2;
+    return 0;
+}
+
+ int hit_door(char **map, int map_x, int map_y)
+{
+    if (map_y < 0 || map_x < 0) 
+        return 0;
+    return (map[map_y][map_x] == 'D');
+}
+
+//texture-----------
+void draw_column(t_game *game, int screen_x, int start , int end ,int tex_x)
+{
+	int texture_y;
+
+    for (int y = start; y < end; y++)
+	{
+		texture_y = (y - start) * game->texture[0]->height / (end - start);
+		int color = get_pixel_color(game->texture[1], tex_x, texture_y);
+		mlx_put_pixel(game->img, screen_x, y, color);
+
+	}
+}
+int is_vertical_or_horizontal_door_hit(float ray_x, float ray_y)
+{
+	int x = floorf(fmod(ray_x, TILE_SIZE));
+	int y = floorf(fmod(ray_y, TILE_SIZE));
+	if (x < y)
+		return HORIZONTAL;
+	else
+		return VERTICAL;
+}
+//----------------
+
+int cast_ray_collect_doors(t_game *game, float ray_angle, t_door_hit *hits)
+{
+    float ray_x = game->player.pos.x;
+    float ray_y = game->player.pos.y;
+    float dx = cosf(ray_angle);
+    float dy = sinf(ray_angle);
+    float distance = 0.0f;
+    int hit_count = 0;
+
+    while (1)
+    {
+        if (hit_count >= 255) 
+            return hit_count;
+        int map_x = (int)(ray_x / TILE_SIZE);
+        int map_y = (int)(ray_y / TILE_SIZE);
+
+        if (map_y < 0 || map_x < 0 || map_y >= game->minimap.map_h || map_x >= game->minimap.map_w ) 
+            break;
+        if ( game->map[map_y][map_x] == '1') 
+            break;
+        if (hit_door(game->map, map_x, map_y))
+        {
+                t_door *temp = game->ptrdoor;
+                while (temp && (temp->x != map_x || temp->y != map_y))
+                    temp = temp->next;
+                if (!temp) 
+                    break;
+                int already_hit = 0;
+            for (int i = 0; i < hit_count; i++)
+            {
+                if (hits[i].door == temp)
+                {
+                    already_hit = 1;
+                    break;
+                }
+            }
+            if (!already_hit)
+            {
+                hits[hit_count].door = temp;
+                hits[hit_count].distance = distance * cosf(game->player.angle - ray_angle);
+                hits[hit_count].orientation = check_door_orientation(game->map, map_x, map_y);
+                hits[hit_count].ray_x = ray_x;
+                hits[hit_count].ray_y = ray_y;
+                hit_count++;
+            }
+
+                // hits[hit_count].door = temp;
+                // hits[hit_count].distance = distance * cosf(game->player.angle - ray_angle);
+                // hits[hit_count].orientation = check_door_orientation(game->map, map_x, map_y);
+                // hits[hit_count].ray_x = ray_x;
+                // hits[hit_count].ray_y = ray_y;
+                // hit_count++;
+        }
+        ray_x += dx;
+        ray_y += dy;
+        distance += 0.32f;
+    }
+
+    return hit_count;
+}
+
+
+void draw_single_door_hit(t_game *game, t_door_hit *hit, int column)
+{
+    int column_height = (TILE_SIZE * 270) / hit->distance;
+    float open_factor = 1.0f - hit->door->offset;
+    int visible_height = (int)(column_height * open_factor);
+    int shift_up = (int)(column_height * hit->door->offset / 2);
+    int start = (HEIGHT / 2) - (column_height / 2) - shift_up;
+    int end = start + visible_height;
+    if (start < 0) start = 0;
+    if (end >= HEIGHT) end = HEIGHT - 1;
+
+    int texture_x;
+    if (is_vertical_or_horizontal_door_hit(hit->ray_x, hit->ray_y) == VERTICAL)
+        texture_x = (fmod(hit->ray_x, TILE_SIZE) * game->texture[0]->width) / TILE_SIZE;
+    else
+        texture_x = (fmod(hit->ray_y, TILE_SIZE) * game->texture[0]->width) / TILE_SIZE;
+
+    float door_start_x;
+    float door_end_x;
+    float door_start_y;
+    float door_end_y;
+    float door_width = TILE_SIZE * 0.01f;
+
+    if (hit->orientation == 2)
+    {
+        door_start_y = hit->door->y * TILE_SIZE;
+        door_end_y = door_start_y + door_width;
+        if (hit->ray_y >= door_start_y && hit->ray_y <= door_end_y)
+            draw_column(game, column, start, end, texture_x);
+    }
+    else if (hit->orientation == 1)
+    {
+        door_start_x = hit->door->x * TILE_SIZE;
+        door_end_x = door_start_x + door_width;
+        if (hit->ray_x >= door_start_x && hit->ray_x <= door_end_x)
+            draw_column(game, column, start, end, texture_x);
+    }
+}
+
+void ft_raycast_doors(t_game *game)
+{
+    float fov_rad;
+    float start_angle;
+    int column;
+
+    fov_rad = FOV * (M_PI / 180.0f);
+    start_angle = game->player.angle - fov_rad / 2.0f;
+    column = -1;
+    while (++column < WIDTH)
+    {
+        float ray_angle = start_angle + (fov_rad / WIDTH) * column;
+        t_door_hit hits[(int)WIDTH];
+        int hit_count = cast_ray_collect_doors(game, ray_angle, hits);
+        while (--hit_count >= 0)
+        {
+            draw_single_door_hit(game, &hits[hit_count], column);
+        }
+    }
+}
+
+#todo for the music processe should kill it everytime

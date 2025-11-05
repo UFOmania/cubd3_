@@ -52,7 +52,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	 $(AR) $(NAME) $(OBJ)
 	
-%.o: %.c libft.h get_next_line.h
+%.o: %.c ../include/libft.h ../include/get_next_line.h
 	 $(CC) $(CFLAGS) -c $< -o $@
 
 clean:
