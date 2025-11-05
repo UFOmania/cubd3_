@@ -4,9 +4,9 @@ NAME_BONUS = cub3D_bonus
 
 
 TIME_ALLOCATED ?= 0
-FLAGS = -Wall -Wextra -Werror  -D TIME_ALLOCATED=$(TIME_ALLOCATED)
+FLAGS = -Wall -Wextra -Werror -fsanitize=address -g3 # -D TIME_ALLOCATED=$(TIME_ALLOCATED)
 
-LDLIBS = -lglfw -framework Cocoa -framework OpenGL -framework IOKit
+LDLIBS = -lglfw -framework Cocoa -framework OpenGL -framework IOKit  -L /goinfre/ybassour/homebrew/lib
 
 INCLUDE_MANDATORY	= include/.MLX42.h include/libft.h include/cub_mandatory.h include/parsing_mandatory.h
 INCLUDE_BONUS		= include/.MLX42.h include/libft.h include/cub_bonus.h include/parsing_bonus.h    
