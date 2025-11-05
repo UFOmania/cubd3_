@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:09 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/05 14:23:53 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/05 15:13:44 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,10 @@ static int	analyze_map(t_game *game, char *map_name)
 	if (apply_map_ope(map_name, mg))
 		return (R_FAIL);
 	if (dup_map(&game->map, mg->maps) == R_FAIL)
+	{
+		display_error_input_malloc(ERR_MALLOC_FAILED, NULL);
 		return (free_map_mg(mg), R_FAIL);
+	}
 	init_player(mg, game);
 	if (load_textures(game, mg) == R_FAIL)
 		return (free_map_mg(mg), free_map(game->map), R_FAIL);
@@ -86,7 +89,7 @@ static int	analyze_map(t_game *game, char *map_name)
 int	init_game(t_game *game, char *map_name)
 {
 	if (analyze_map(game, map_name) == R_FAIL)
-		return (R_FAIL);
+		return (mlx_close_window(game->mlx), R_FAIL);
 	game->ppd = (WIDTH / 2) / tan(deg_to_rad(FOV / 2));
 	game->img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 	if (!game->img)

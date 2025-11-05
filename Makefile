@@ -5,7 +5,7 @@ NAME_BONUS = cub3D_bonus
 
 FLAGS = -Wall -Wextra -Werror
 
-LDLIBS = -lglfw -framework Cocoa -framework OpenGL -framework IOKit
+LDLIBS = -lglfw -framework Cocoa -framework OpenGL -framework IOKit  -L /goinfre/ybassour/homebrew/lib
 
 INCLUDE_MANDATORY	= include/.MLX42.h include/libft.h include/cub_mandatory.h include/parsing_mandatory.h
 INCLUDE_BONUS		= include/.MLX42.h include/libft.h include/cub_bonus.h include/parsing_bonus.h    
