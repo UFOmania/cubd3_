@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   utils_door.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 03:29:59 by ybassour          #+#    #+#             */
-/*   Updated: 2025/11/05 11:57:09 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/05 21:31:08 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub_bonus.h"
 
-static t_door *create_new_door(int x, int y)
+static t_door	*create_new_door(int x, int y)
 {
-	t_door *new;
+	t_door	*new;
 
 	new = malloc(sizeof(t_door));
 	if (!new)
@@ -29,7 +29,7 @@ static t_door *create_new_door(int x, int y)
 	return (new);
 }
 
-static bool append_door(t_door **head, t_door **tail, t_door *new)
+static bool	append_door(t_door **head, t_door **tail, t_door *new)
 {
 	if (!new)
 		return (false);
@@ -46,7 +46,7 @@ static bool append_door(t_door **head, t_door **tail, t_door *new)
 	return (true);
 }
 
-static void free_doors_with_error(t_door *head)
+static void	free_doors_with_error(t_door *head)
 {
 	t_door	*tmp;
 
@@ -60,7 +60,7 @@ static void free_doors_with_error(t_door *head)
 	}
 }
 
-static bool process_door_row(char **map, int y, t_door **head, t_door **tail)
+static bool	process_door_row(char **map, int y, t_door **head, t_door **tail)
 {
 	int		x;
 	t_door	*new;
@@ -84,11 +84,11 @@ static bool process_door_row(char **map, int y, t_door **head, t_door **tail)
 	return (true);
 }
 
-t_door *create_list_door(char **map)
+t_door	*create_list_door(char **map)
 {
-	t_door *head;
-	t_door *tail;
-	int y;
+	t_door	*head;
+	t_door	*tail;
+	int		y;
 
 	head = NULL;
 	tail = NULL;
@@ -105,4 +105,3 @@ t_door *create_list_door(char **map)
 		print_error("Error: map does not contain any door");
 	return (head);
 }
-

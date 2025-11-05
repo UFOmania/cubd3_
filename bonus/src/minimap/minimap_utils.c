@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minimap_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/05 21:08:20 by ybassour          #+#    #+#             */
+/*   Updated: 2025/11/05 21:10:02 by ybassour         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../../include/cub_bonus.h"
 
@@ -7,14 +17,12 @@ int32_t	ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
+void	ft_draw_player(t_game *game, int px, int py, int cell_size)
+{
+	int	dx;
+	int	psize;
+	int	dy;
 
-
-void ft_draw_player(t_game *game, int px, int py, int cell_size)
-{  
-	int dx;
-	int psize;
-	int dy;
-	
 	dx = 0;
 	psize = cell_size / 2;
 	dy = 0;
@@ -33,16 +41,16 @@ void ft_draw_player(t_game *game, int px, int py, int cell_size)
 	}
 }
 
-void ft_minimap_init(t_game *game, t_minimap *minimap)
+void	ft_minimap_init(t_game *game, t_minimap *minimap)
 {
-   	minimap->_x_player = game->player.pos.x / TILE_SIZE;
-   	minimap->_y_player = game->player.pos.y / TILE_SIZE;
+	minimap->_x_player = game->player.pos.x / TILE_SIZE;
+	minimap->_y_player = game->player.pos.y / TILE_SIZE;
 	game->player.cell_x = minimap->_x_player;
 	game->player.cell_y = minimap->_y_player;
-	minimap->view      = 4;
+	minimap->view = 4;
 	minimap->cell_size = 30;
-	minimap->map_h     = game->minimap.map_h;
-	minimap->map_w     = game->minimap.map_w;
+	minimap->map_h = game->minimap.map_h;
+	minimap->map_w = game->minimap.map_w;
 	if (minimap->_y_player - minimap->view >= 0)
 		minimap->y_start = minimap->_y_player - minimap->view;
 	else

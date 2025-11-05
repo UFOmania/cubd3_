@@ -1,21 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_minimap_rays.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/05 21:06:05 by ybassour          #+#    #+#             */
+/*   Updated: 2025/11/05 21:08:03 by ybassour         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../include/cub_bonus.h"
 
-static float ft_get_player_x(t_game *game, t_minimap *minimap)
+static float	ft_get_player_x(t_game *game, t_minimap *minimap)
 {
-	return ((game->player.cell_x - minimap->x_start)
+	return ((game->player.cell_x - minimap->x_start) \
 	* minimap->cell_size + minimap->cell_size / 2);
 }
 
-static float ft_get_player_y(t_game *game, t_minimap *minimap)
+static float	ft_get_player_y(t_game *game, t_minimap *minimap)
 {
-	return ((game->player.cell_y - minimap->y_start)
+	return ((game->player.cell_y - minimap->y_start) \
 	* minimap->cell_size + minimap->cell_size / 2);
 }
 
-static int ft_is_wall_hit(t_game *game, t_minimap *minimap, float x, float y)
+static	int	ft_is_wall_hit(t_game *game, t_minimap *minimap, float x, float y)
 {
-	int map_x;
-	int map_y;
+	int	map_x;
+	int	map_y;
 
 	map_x = (int)(x / minimap->cell_size) + minimap->x_start;
 	map_y = (int)(y / minimap->cell_size) + minimap->y_start;
@@ -27,13 +39,13 @@ static int ft_is_wall_hit(t_game *game, t_minimap *minimap, float x, float y)
 	return (0);
 }
 
-static void ft_draw_single_ray(t_game *game, t_minimap *minimap,
+static void	ft_draw_single_ray(t_game *game, t_minimap *minimap,
 float ray_angle, float max_dist)
 {
-	float ray_x;
-	float ray_y;
-	float dx;
-	float dy;
+	float	ray_x;
+	float	ray_y;
+	float	dx;
+	float	dy;
 
 	ray_x = ft_get_player_x(game, minimap);
 	ray_y = ft_get_player_y(game, minimap);
@@ -50,13 +62,13 @@ float ray_angle, float max_dist)
 	}
 }
 
-void ft_draw_rays_minimap(t_game *game, t_minimap *minimap)
+void	ft_draw_rays_minimap(t_game *game, t_minimap *minimap)
 {
-	float fov;
-	int i;
-	float start_angle;
-	float angle_step;
-	float max_dist;
+	float	fov;
+	int		i;
+	float	start_angle;
+	float	angle_step;
+	float	max_dist;
 
 	fov = 60.0f * (M_PI / 180.0f);
 	start_angle = game->player.angle - fov / 2;
@@ -66,7 +78,8 @@ void ft_draw_rays_minimap(t_game *game, t_minimap *minimap)
 	i = 0;
 	while (i < 60)
 	{
-		ft_draw_single_ray(game, minimap, start_angle + i * angle_step, max_dist);
+		ft_draw_single_ray(game, minimap, start_angle + i * \
+			angle_step, max_dist);
 		i++;
 	}
 }

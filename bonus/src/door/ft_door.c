@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_door.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 20:08:29 by ybassour          #+#    #+#             */
-/*   Updated: 2025/11/05 11:57:09 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/05 21:03:12 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ static void	draw_single_door_hit(t_game *game, t_door_hit *hit,
 	else
 		texture_x = (fmod(hit->ray_y, TILE_SIZE)
 				* game->door_img->width) / TILE_SIZE;
-	draw_column(game, column, start, end, texture_x);
+	game->door.column = column;
+	draw_column(game, start, end, texture_x);
 }
 
 void	process_draw_single_door_hit(t_game *game,
@@ -74,27 +75,3 @@ void	ft_raycast_doors(t_game *game)
 	while (++column < WIDTH)
 		process_single_door_ray(game, start_angle, fov_rad, column);
 }
-
-// void ft_raycast_doors(t_game *game)
-// {
-// 	float	fov_rad;
-// 	float	start_angle;
-// 	int		column;
-// 	float	ray_angle;
-// 	int		hit_count;
-
-// 	fov_rad = FOV * (M_PI / 180.0f);
-// 	start_angle = game->player.angle - fov_rad / 2.0f;
-// 	column = -1;
-// 	while (++column < WIDTH)
-// 	{
-// 		ray_angle = start_angle + (fov_rad / WIDTH) * column;
-// 		t_door_hit hits[(int)WIDTH];
-// 		hit_count = cast_ray_collect_doors(game, ray_angle, hits);
-// 		while (--hit_count >= 0)
-// 		{
-// 			process_draw_single_door_hit(game, \
-//				&hits[hit_count], column, ray_angle);
-// 		}
-// 	}
-// }

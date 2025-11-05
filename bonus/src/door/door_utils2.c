@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door_utils2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 20:54:11 by ybassour          #+#    #+#             */
-/*   Updated: 2025/11/05 11:57:09 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/05 21:03:16 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,15 @@ int	hit_door(char **map, int map_x, int map_y)
 	return (map[map_y][map_x] == 'D');
 }
 
-void	draw_column(t_game *game, int screen_x, int start, int end, int tex_x)
+void	draw_column(t_game *game, int start, int end, int tex_x)
 {
 	int	texture_y;
 	int	y;
 	int	color;
+	int	screen_x;
 
 	y = start;
+	screen_x = game->door.column;
 	while (y < end)
 	{
 		if (y < 0 || y >= HEIGHT)

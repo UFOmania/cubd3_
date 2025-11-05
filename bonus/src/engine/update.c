@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:40 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/05 14:38:39 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/05 21:48:47 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ void	update(void *param)
 
 	game = (t_game *)param;
 	handle_mouse_click(game, param);
-	process_mouse_rotation(game);
+	catch_mouse_move(param);
 	apply_inputs(&game->player, game->map);
 	raycast(game);
 	ft_update_door_3d(game);
 	ft_raycast_doors(game);
 	ft_fill_map(game);
-	update_update(game);
+	update_animation(param);
 }

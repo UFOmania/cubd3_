@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:45 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/05 18:46:24 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/05 21:48:23 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ typedef struct s_door
 {
     int cell_x;
     int cell_y;
+	int column;
 	int x; // for mr
     int y; // for me
     float offset;
@@ -225,11 +226,10 @@ void			clear_game(t_game *game);
 ///
 void			catch_mouse_click(mouse_key_t button, action_t action, modifier_key_t mods, void *param);
 
-void			catch_mouse_move(double xpos, double ypos, void *param);
 void			stop_music();
 void			play_music(void);
 void			play_music_atck(void);
-void			update_update(void *param);
+void			update_animation(void *param);
 
 t_player		get_player_position(char *mapp[]);
 void			ft_fill_map(t_game *game);
@@ -243,7 +243,7 @@ int				init_game_anim(t_game  *game ,t_anim *anim);
 
 int				check_door_orientation(char **map, int x, int y);
 int				hit_door(char **map, int map_x, int map_y);
-void			draw_column(t_game *game, int screen_x, int start , int end ,int tex_x);
+void			draw_column(t_game *game, int start , int end ,int tex_x);
 int				is_vertical_or_horizontal_door_hit(char **map, float door_x, float door_y);
 t_door			*get_target_door(t_game *game, int map_x, int map_y);
 int				cast_ray_collect_doors(t_game *game, float ray_angle, t_door_hit *hits);
@@ -251,6 +251,5 @@ void			ft_draw_player(t_game *game, int px, int py, int cell_size);
 void			ft_minimap_init(t_game *game, t_minimap *minimap);
 void			ft_draw_rays_minimap(t_game *game, t_minimap *minimap);
 void			clear_doors(t_game *game);
-// void			process_mouse_rotation(t_game *game,double xpos, double ypos);
-void			process_mouse_rotation(t_game *game);
+void			catch_mouse_move(void *param);
 #endif

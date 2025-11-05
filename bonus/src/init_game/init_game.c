@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:09 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/05 11:57:09 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/05 21:05:29 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,12 @@ static int	dup_map(char ***dst, char **map)
 
 static int	get_map_size(char **map, t_game *game)
 {
-	int row;
-	int col;
-	int max_col;
+	int	row;
+	int	col;
+	int	max_col;
 
 	if (!map || !game)
-		return 1;
+		return (1);
 	row = 0;
 	max_col = 0;
 	while (map[row])
@@ -86,6 +86,7 @@ static int	get_map_size(char **map, t_game *game)
 	game->minimap.map_w = max_col;
 	return (0);
 }
+
 static int	analyze_map(t_game *game, char *map_name)
 {
 	t_map_mg	*mg;
@@ -98,7 +99,7 @@ static int	analyze_map(t_game *game, char *map_name)
 	if (apply_map_ope(map_name, mg))
 		return (R_FAIL);
 	game->ptrdoor = create_list_door(mg->maps);
-	if (!game->ptrdoor  || !is_valid_door(mg->maps))
+	if (!game->ptrdoor || !is_valid_door(mg->maps))
 		return (clear_doors(game), free_map_mg(mg), R_FAIL);
 	if (dup_map(&game->map, mg->maps) == R_FAIL)
 		return (clear_doors(game), free_map_mg(mg), R_FAIL);
@@ -108,7 +109,6 @@ static int	analyze_map(t_game *game, char *map_name)
 	free_map_mg(mg);
 	if (get_map_size(game->map, game))
 		return (R_FAIL); //todo for free the map2 and game struct if use malloc
-	
 	return (R_SUCCESS);
 }
 
@@ -122,8 +122,8 @@ int	init_game(t_game *game, char *map_name)
 		return (clear_game(game), R_FAIL);
 	if (mlx_image_to_window(game->mlx, game->img, 0, 0) == -1)
 		return (clear_game(game), R_FAIL);
-	if (init_game_anim(game ,&game->anim) == R_FAIL)
+	if (init_game_anim(game, &game->anim) == R_FAIL)
 		return (clear_game(game), R_FAIL); //todo check leaks
-	game->player.is_over_gang = 10; // me
+	game->player.is_over_gang = 10;
 	return (R_SUCCESS);
 }
