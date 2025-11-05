@@ -6,7 +6,7 @@
 /*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:45 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/05 11:53:12 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/05 18:46:24 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@
 # define S 1
 # define W 2
 # define E 3
-static const int CENTER_X_MOUSE = WIDTH / 2;
+
+static 	const int CENTER_X_MOUSE = WIDTH / 2;
 static const int CENTER_Y_MOUSE = HEIGHT / 2;
 #define SPRITE_OFFSET_X 550
 #define SPRITE_OFFSET_Y 370

@@ -6,7 +6,7 @@
 /*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 10:59:46 by ybassour          #+#    #+#             */
-/*   Updated: 2025/11/05 11:41:12 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/05 18:46:40 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include "libft.h"
-void *ft_malloc(size_t size);
 
-#define malloc(x) ft_malloc(x)
 # define ERR_MALLOC_FAILED            1
 # define ERR_CANNOT_OPEN_FILE         2
 # define ERR_NULL_MAP_NAME            3

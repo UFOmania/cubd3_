@@ -3,8 +3,7 @@ NAME = cub3D
 NAME_BONUS = cub3D_bonus
 
 
-TIME_ALLOCATED ?= 0
-FLAGS = -Wall -Wextra -Werror  -D TIME_ALLOCATED=$(TIME_ALLOCATED)
+FLAGS = -Wall -Wextra -Werror
 
 LDLIBS = -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 
@@ -81,7 +80,6 @@ SRC_BONUS =	bonus/src/door/door_utils.c \
 			bonus/src/raycast/render.c \
 			bonus/src/engine/update.c \
 			bonus/src/engine/main.c \
-			bonus/src/ft_malloc.c
  
   
  

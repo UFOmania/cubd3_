@@ -6,11 +6,11 @@
 /*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:36:52 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/05 11:47:08 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/05 18:48:32 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/parsing_mandatory.h"
+#include "../../../include/parsing_bonus.h"
 
 int	get_long_line_in_map(char **map)
 {
