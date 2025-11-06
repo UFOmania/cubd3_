@@ -6,7 +6,7 @@
 /*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:27 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/05 14:38:39 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/06 13:44:59 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	apply_inputs(t_player *player, char **map)
 			player->angle += ROT_SPEED * (double)player->rotate_right ;
 		else if (player->rotate_right_mouse)
 			player->angle += ROT_SPEED * \
-			(double)player->rotate_right_mouse * 0.5;
+			(double)player->rotate_right_mouse * 0.005;
 		if (player->angle >= M_PI * 2)
 			player->angle = 0;
 		if (player->angle < 0)
