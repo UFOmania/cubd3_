@@ -6,7 +6,7 @@
 /*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:43:11 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/05 21:31:56 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/11/06 16:44:55 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,32 @@ static int	check_zero_position(char **map, int row, int col)
 		map[row + 1][col] == ' ' || \
 		map[row - 1][col] == ' ')
 	{
-		printf("Error: Space next to open area at (%d, %d)\n", row, col);
+		print_adjacent_open_area_error("Error: Space next to door area", \
+				row, col);
 		return (1);
 	}
 	return (0);
 }
+
+static int	check_door_position(char **map, int row, int col)
+{
+	if (row == 0 || col == 0 || !map[row + 1] || map[row][col + 1] == '\0')
+	{
+		printf("Error: Open space at edge at (%d, %d)\n", row, col);
+		return (1);
+	}
+	if (map[row][col + 1] == ' ' || \
+		map[row][col - 1] == ' ' || \
+		map[row + 1][col] == ' ' || \
+		map[row - 1][col] == ' ')
+	{
+		print_adjacent_open_area_error("Error: Space next to door area", \
+		row, col);
+		return (1);
+	}
+	return (0);
+}
+
 
 int	check_map_enclosure(char **map)
 {
@@ -87,8 +108,11 @@ int	check_map_enclosure(char **map)
 		while (map[row][col] != '\0')
 		{
 			if (map[row][col] == '0')
-				if (check_zero_position(map, row, col))
-					return (1);
+				{if (check_zero_position(map, row, col))
+					return (1);}
+			else if (map[row][col] == 'D')
+				{if (check_door_position(map, row, col))
+					return (1);}
 			col++;
 		}
 		row++;

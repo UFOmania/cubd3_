@@ -3,7 +3,7 @@ NAME = cub3D
 NAME_BONUS = cub3D_bonus
 
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror# -fsanitize=address -g3
 
 LDLIBS = -lglfw -framework Cocoa -framework OpenGL -framework IOKit  -L /goinfre/ybassour/homebrew/lib
 
@@ -52,8 +52,9 @@ SRC_BONUS =	bonus/src/door/door_utils.c \
 			bonus/src/minimap/minimap.c \
 			bonus/src/mouse/mouse.c \
 			bonus/src/parsing/destroy_game.c \
-			bonus/src/parsing/handle_error_utils.c \
-			bonus/src/parsing/handle_error.c \
+			bonus/src/errors/handle_error_utils.c \
+			bonus/src/errors/handle_error.c \
+			bonus/src/errors/error_display.c \
 			bonus/src/parsing/handle_map.c \
 			bonus/src/parsing/init_map.c\
 			bonus/src/parsing/parsing_map_config.c \
@@ -64,7 +65,6 @@ SRC_BONUS =	bonus/src/door/door_utils.c \
 			bonus/src/parsing/utils.c \
 			bonus/src/parsing/valid.c \
 			bonus/src/parsing/validation.c \
-			bonus/src/sound/sound.c \
 			bonus/src/sprit/sprit.c \
 			bonus/src/raycast/cast_ray.c \
 			bonus/src/clear/clear_game.c \
@@ -83,7 +83,6 @@ SRC_BONUS =	bonus/src/door/door_utils.c \
  
   
  
-
 OBJ = ${SRC:.c=.o}
 OBJ_BONUS = ${SRC_BONUS:.c=.o}
 
@@ -110,7 +109,7 @@ bonus/src/%.o: bonus/src/%.c $(INCLUDE_BONUS) $(LIBFT)
 	cc $(FLAGS) -o $@ -c $<
 
 clean:
-	rm -rf $(OBJ) $(OBJ_BONUS) 
+	rm -rf $(OBJ) $(OBJ_BONUS)
 	make fclean -C ./libft
 
 fclean: clean

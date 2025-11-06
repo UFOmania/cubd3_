@@ -3,42 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 20:09:31 by ybassour          #+#    #+#             */
-/*   Updated: 2025/11/06 13:44:52 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/06 16:09:21 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub_bonus.h"
-
-int	is_over_gang(void *param)
-{
-	t_game	*game;
-
-	game = (t_game *)param;
-	if (game->player.is_over_gang <= 0)
-		return (0);
-	game->player.is_over_gang--;
-	return (1);
-}
-
-int	increamte_gnag_shoot(void *param)
-{
-	t_game	*game;
-	int		time_;
-
-	game = (t_game *)param;
-	if (game->player.is_over_gang <= 0)
-	{
-		time_ = (int)mlx_get_time();
-		if (time_ % 2 == 0)
-		{
-			game->player.is_over_gang = 10;
-		}
-	}
-	return (1);
-}
 
 static void	process_mouse_rotation(t_game *game, int32_t xpos, int32_t ypos)
 {
@@ -62,7 +34,6 @@ static void	process_mouse_rotation(t_game *game, int32_t xpos, int32_t ypos)
 		game->player.rotate_right_mouse = 0;
 		return ;
 	}
-	
 	game->player.rotate_right_mouse = delta_x;
 	mlx_set_mouse_pos(game->mlx, center_x, HEIGHT / 2);
 	last_x = center_x;

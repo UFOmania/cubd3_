@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_mandatory.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:45 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/05 11:40:52 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/05 22:01:48 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdio.h>
 # include <math.h>
 # include ".MLX42.h"
-# include "parsing_mandatory.h"
+# include "parsing_mandatory.h" 
 # include "libft.h"
 
 # define R_FAIL 0

@@ -6,7 +6,7 @@
 /*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:13 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/05 21:29:17 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/11/06 16:08:35 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,5 @@ void	close_game( void *param)
 	t_game	*game;
 
 	game = (t_game *)param;
-	// stop_music(); //todo use or remove
 	clear_game(game);
 }
