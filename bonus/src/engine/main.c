@@ -6,7 +6,7 @@
 /*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 20:50:51 by ybassour          #+#    #+#             */
-/*   Updated: 2025/11/06 16:07:17 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/11/06 18:00:15 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	lanch_engine(t_game *game)
 {
-	// ft_fill_map(game);//todo ask for it
 	mlx_close_hook(game->mlx, close_game, game);
 	mlx_key_hook(game->mlx, input, game);
 	mlx_loop_hook(game->mlx, update, game);
@@ -26,7 +25,7 @@ void	lanch_engine(t_game *game)
 void	f(void)
 {
 	// system("leaks cub3D_bonus");
-	// system("lsof -c cub3D_bonus"); //todo check fds leaks ghda
+	// system("lsof -c cub3D_bonus");
 }
 
 int	main(int ac, char **av)
@@ -42,7 +41,7 @@ int	main(int ac, char **av)
 	game.mlx = mlx_init(WIDTH, HEIGHT, "cub3D", 0);
 	if (!game.mlx)
 		return (mlx_strerror(mlx_errno), EXIT_FAILURE);
-	if (init_game(&game, av[1]) == R_FAIL) // todo the mlx win if the map mg falied should free mlx
+	if (init_game(&game, av[1]) == R_FAIL)
 		return (1);
 	game.last_time = 0;
 	game.ignore_next_mouse = false;

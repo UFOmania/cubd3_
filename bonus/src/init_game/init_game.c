@@ -6,7 +6,7 @@
 /*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:09 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/06 16:11:13 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/11/06 17:56:51 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,14 +108,14 @@ static int	analyze_map(t_game *game, char *map_name)
 		return (free_map_mg(mg), free_map(game->map), R_FAIL);
 	free_map_mg(mg);
 	if (get_map_size(game->map, game))
-		return (R_FAIL); //todo for free the map2 and game struct if use malloc
+		return (R_FAIL);
 	return (R_SUCCESS);
 }
 
 int	init_game(t_game *game, char *map_name)
 {
-	if (analyze_map(game, map_name) == R_FAIL) //todo mlx leaks
-		return (R_FAIL);
+	if (analyze_map(game, map_name) == R_FAIL)
+		return (mlx_close_window(game->mlx), R_FAIL);
 	game->ppd = (WIDTH / 2) / tan(deg_to_rad(FOV / 2));
 	game->img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 	if (!game->img)
@@ -123,6 +123,6 @@ int	init_game(t_game *game, char *map_name)
 	if (mlx_image_to_window(game->mlx, game->img, 0, 0) == -1)
 		return (clear_game(game), R_FAIL);
 	if (init_game_anim(game, &game->anim) == R_FAIL)
-		return (clear_game(game), R_FAIL); //todo check leaks
+		return (clear_game(game), R_FAIL);
 	return (R_SUCCESS);
 }

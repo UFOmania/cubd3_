@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clear_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:48:49 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/05 14:38:39 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/06 17:58:33 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	clear_game(t_game *game)
 {
 	if (!game)
 		return ;
-	free_map(game->map);//todo why here head use after sometimes
+	free_map(game->map);
 	clear_images(game);
 	mlx_close_window(game->mlx);
 	clear_doors(game);

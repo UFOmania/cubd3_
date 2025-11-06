@@ -3,7 +3,7 @@ NAME = cub3D
 NAME_BONUS = cub3D_bonus
 
 
-FLAGS = -Wall -Wextra -Werror# -fsanitize=address -g3
+FLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 
 LDLIBS = -lglfw -framework Cocoa -framework OpenGL -framework IOKit  -L /goinfre/ybassour/homebrew/lib
 
