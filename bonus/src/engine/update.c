@@ -6,7 +6,7 @@
 /*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:40 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/05 21:48:47 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/11/06 15:39:33 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ void	update(void *param)
 	raycast(game);
 	ft_update_door_3d(game);
 	ft_raycast_doors(game);
-	ft_fill_map(game);
+	//ft_fill_map(game);
 	update_animation(param);
 }
