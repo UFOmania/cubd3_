@@ -52,8 +52,9 @@ SRC_BONUS =	bonus/src/door/door_utils.c \
 			bonus/src/minimap/minimap.c \
 			bonus/src/mouse/mouse.c \
 			bonus/src/parsing/destroy_game.c \
-			bonus/src/parsing/handle_error_utils.c \
-			bonus/src/parsing/handle_error.c \
+			bonus/src/errors/handle_error_utils.c \
+			bonus/src/errors/handle_error.c \
+			bonus/src/errors/error_display.c \
 			bonus/src/parsing/handle_map.c \
 			bonus/src/parsing/init_map.c\
 			bonus/src/parsing/parsing_map_config.c \
@@ -64,7 +65,6 @@ SRC_BONUS =	bonus/src/door/door_utils.c \
 			bonus/src/parsing/utils.c \
 			bonus/src/parsing/valid.c \
 			bonus/src/parsing/validation.c \
-			bonus/src/sound/sound.c \
 			bonus/src/sprit/sprit.c \
 			bonus/src/raycast/cast_ray.c \
 			bonus/src/clear/clear_game.c \

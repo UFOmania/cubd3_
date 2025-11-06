@@ -6,7 +6,7 @@
 /*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:45 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/05 21:48:23 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/11/06 16:09:52 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ typedef struct s_player
 	int		rotate_right;
 	int		rotate_right_mouse;
     int mouse_down;
-	int is_over_gang;
 	double dir_x;    // direction vector x
 	double dir_y;    // direction vector y
 	double plane_x;  // camera plane x
@@ -225,10 +224,6 @@ unsigned int	get_pixel_color(mlx_image_t *img, uint32_t x, uint32_t y);
 void			clear_game(t_game *game);
 ///
 void			catch_mouse_click(mouse_key_t button, action_t action, modifier_key_t mods, void *param);
-
-void			stop_music();
-void			play_music(void);
-void			play_music_atck(void);
 void			update_animation(void *param);
 
 t_player		get_player_position(char *mapp[]);

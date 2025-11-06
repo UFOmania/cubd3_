@@ -6,7 +6,7 @@
 /*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:09 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/05 21:05:29 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/11/06 16:11:13 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,5 @@ int	init_game(t_game *game, char *map_name)
 		return (clear_game(game), R_FAIL);
 	if (init_game_anim(game, &game->anim) == R_FAIL)
 		return (clear_game(game), R_FAIL); //todo check leaks
-	game->player.is_over_gang = 10;
 	return (R_SUCCESS);
 }

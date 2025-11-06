@@ -297,4 +297,4 @@ void ft_raycast_doors(t_game *game)
     }
 }
 
-#todo for the music processe should kill it everytime
+#todo for the music processe should kill it everytim

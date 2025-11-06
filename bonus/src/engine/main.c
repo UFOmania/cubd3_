@@ -6,7 +6,7 @@
 /*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 20:50:51 by ybassour          #+#    #+#             */
-/*   Updated: 2025/11/06 13:46:19 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/11/06 16:07:17 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	lanch_engine(t_game *game)
 {
 	// ft_fill_map(game);//todo ask for it
-	//  play_music();
 	mlx_close_hook(game->mlx, close_game, game);
 	mlx_key_hook(game->mlx, input, game);
 	mlx_loop_hook(game->mlx, update, game);

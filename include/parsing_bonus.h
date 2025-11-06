@@ -6,7 +6,7 @@
 /*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 10:59:46 by ybassour          #+#    #+#             */
-/*   Updated: 2025/11/05 21:57:49 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/11/06 16:41:55 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,5 @@ int		check_player_validity(char **maps);
 int		player_adjacent_to_space(char **maps, int row, int col);
 int		is_player_symbol(char c);
 bool	is_valid_door(char **map);
+void	print_adjacent_open_area_error(const char *msg, int row, int col);
 #endif
