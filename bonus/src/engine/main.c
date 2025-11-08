@@ -6,7 +6,7 @@
 /*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 20:50:51 by ybassour          #+#    #+#             */
-/*   Updated: 2025/11/06 18:00:15 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/11/07 17:56:41 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	lanch_engine(t_game *game)
 	mlx_loop_hook(game->mlx, update, game);
 	mlx_mouse_hook(game->mlx, catch_mouse_click, game);
 	mlx_set_cursor_mode(game->mlx, MLX_MOUSE_HIDDEN);
+	mlx_set_cursor_mode(game->mlx, MLX_MOUSE_DISABLED);
 	mlx_loop(game->mlx);
 }
 

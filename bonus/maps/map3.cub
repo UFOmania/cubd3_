@@ -1,10 +1,10 @@
-NO texture/w.png
-SO texture/s.png
-WE texture/n.png
-EA texture/e.png
+NO bonus/texture/w.png
+SO bonus/texture/s.png
+WE bonus/texture/n.png
+EA bonus/texture/e.png
 F 200,170,120
 C 70,130,180
 
-1111111111
-1111D00W11
-1111111111
+1111111111111111
+1111D00W11000001
+1111111111111111

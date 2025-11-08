@@ -110,10 +110,12 @@ bonus/src/%.o: bonus/src/%.c $(INCLUDE_BONUS) $(LIBFT)
 
 clean:
 	rm -rf $(OBJ) $(OBJ_BONUS)
-	make fclean -C ./libft
+	make fclean -C ./libft 
+# here clean
 
 fclean: clean
 	rm -rf $(NAME) $(NAME_BONUS)
+#make fclean -C ./libft #todo fclean
 
 re: clean all
 

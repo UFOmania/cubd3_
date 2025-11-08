@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door_utils1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 01:20:08 by ybassour          #+#    #+#             */
-/*   Updated: 2025/11/05 11:57:09 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/07 17:22:14 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ bool	is_hit_exist_door(t_door_hit *hits, int hit_count, t_door *temp)
 static void	fill_door_hit_data(t_game *game, t_door_hit *hit, t_door *door)
 {
 	hit->door = door;
-	hit->distance = game->ray.distance
+	// hit->distance = game->ray.distance
+	hit->distance = game->ray.distance = distance(game->player.pos,(t_vec2){game->ray.ray_x,game->ray.ray_y})
 		* cosf(game->player.angle - game->ray.ray_angle);
 	hit->orientation = check_door_orientation(game->map, \
 		game->ray.map_x, game->ray.map_y);
@@ -89,7 +90,6 @@ int	cast_ray_collect_doors(t_game *game, float ray_angle, t_door_hit *hits)
 			break ;
 		game->ray.ray_x += game->ray.d_x;
 		game->ray.ray_y += game->ray.d_y;
-		game->ray.distance += 0.2f;
 	}
 	return (hit_count);
 }
