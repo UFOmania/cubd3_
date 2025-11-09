@@ -6,7 +6,7 @@
 /*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:43:11 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/05 15:11:55 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/11/06 16:54:56 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*is_valid_texture(char *line, const char *id)
 	path[ft_strlen(path) - 1] = '\0';
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-		return (display_error_file(ERR_FILE_OPEN_FAILED, path),\
+		return (display_error_file(ERR_FILE_OPEN_FAILED, path), \
 		free(path), NULL);
 	close(fd);
 	free(line);

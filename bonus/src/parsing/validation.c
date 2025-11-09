@@ -6,7 +6,7 @@
 /*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:43:11 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/06 16:44:55 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/11/06 17:52:17 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ static int	check_door_position(char **map, int row, int col)
 	return (0);
 }
 
-
 int	check_map_enclosure(char **map)
 {
 	int	row;
@@ -107,12 +106,10 @@ int	check_map_enclosure(char **map)
 		col = 0;
 		while (map[row][col] != '\0')
 		{
-			if (map[row][col] == '0')
-				{if (check_zero_position(map, row, col))
-					return (1);}
-			else if (map[row][col] == 'D')
-				{if (check_door_position(map, row, col))
-					return (1);}
+			if (map[row][col] == '0' && check_zero_position(map, row, col))
+				return (1);
+			else if (map[row][col] == 'D' && check_door_position(map, row, col))
+				return (1);
 			col++;
 		}
 		row++;

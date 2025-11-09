@@ -6,12 +6,12 @@
 /*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 10:59:46 by ybassour          #+#    #+#             */
-/*   Updated: 2025/11/05 22:02:09 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/11/06 17:46:50 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#ifndef PARSING_MANDATORY_H
+# define PARSING_MANDATORY_H
 
 # include <unistd.h>
 # include <stdio.h>

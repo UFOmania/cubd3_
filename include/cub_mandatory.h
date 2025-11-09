@@ -6,12 +6,12 @@
 /*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:45 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/05 22:01:48 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/11/06 17:45:42 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_H
-# define CUB_H
+#ifndef CUB_MANDATORY_H
+# define CUB_MANDATORY_H
 
 # include <stdio.h>
 # include <math.h>

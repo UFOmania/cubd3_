@@ -3,7 +3,7 @@ NAME = cub3D
 NAME_BONUS = cub3D_bonus
 
 
-FLAGS = -Wall -Wextra -Werror# -fsanitize=address -g3
+FLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 
 LDLIBS = -lglfw -framework Cocoa -framework OpenGL -framework IOKit  -L /goinfre/ybassour/homebrew/lib
 
@@ -110,10 +110,12 @@ bonus/src/%.o: bonus/src/%.c $(INCLUDE_BONUS) $(LIBFT)
 
 clean:
 	rm -rf $(OBJ) $(OBJ_BONUS)
-	make fclean -C ./libft
+	make fclean -C ./libft 
+# here clean
 
 fclean: clean
 	rm -rf $(NAME) $(NAME_BONUS)
+#make fclean -C ./libft #todo fclean
 
 re: clean all
 

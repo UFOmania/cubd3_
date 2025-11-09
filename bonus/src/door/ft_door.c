@@ -6,15 +6,15 @@
 /*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 20:08:29 by ybassour          #+#    #+#             */
-/*   Updated: 2025/11/05 21:03:12 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/11/07 17:19:18 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub_bonus.h"
 
-static void	calc_door_render_data(t_door_hit *hit, t_door_render *r)
+static void	calc_door_render_data(t_game *game,t_door_hit *hit, t_door_render *r)
 {
-	r->column_height = (TILE_SIZE * 270) / hit->distance;
+	r->column_height = (TILE_SIZE * game->ppd) / hit->distance;
 	r->open_factor = 1.0f - hit->door->offset;
 	r->visible_height = (int)(r->column_height * r->open_factor);
 	r->shift_up = (int)(r->column_height * hit->door->offset / 2);
@@ -46,7 +46,7 @@ void	process_draw_single_door_hit(t_game *game,
 	t_door_render	r;
 
 	(void)ray_angle;
-	calc_door_render_data(hit, &r);
+	calc_door_render_data(game,hit, &r);
 	draw_single_door_hit(game, hit, column, &r);
 }
 
@@ -60,7 +60,9 @@ static void	process_single_door_ray(t_game *game, \
 	ray_angle = start_angle + (fov_rad / WIDTH) * column;
 	hit_count = cast_ray_collect_doors(game, ray_angle, hits);
 	while (--hit_count >= 0)
+	{
 		process_draw_single_door_hit(game, &hits[hit_count], column, ray_angle);
+	}
 }
 
 void	ft_raycast_doors(t_game *game)

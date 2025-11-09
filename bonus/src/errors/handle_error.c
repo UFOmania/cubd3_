@@ -6,7 +6,7 @@
 /*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:09:45 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/06 16:41:02 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/11/06 17:57:06 by ybassour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,3 @@ int	display_error_file(int code, const char *target)
 		return (0);
 	return (1);
 }
-
