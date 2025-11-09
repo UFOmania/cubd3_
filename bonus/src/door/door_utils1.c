@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   door_utils1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 01:20:08 by ybassour          #+#    #+#             */
-/*   Updated: 2025/11/07 17:22:14 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/11/09 10:38:55 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub_bonus.h"
 
-bool	is_hit_exist_door(t_door_hit *hits, int hit_count, t_door *temp)
+static bool	is_hit_exist_door(t_door_hit *hits, int hit_count, t_door *temp)
 {
 	int	i;
 
@@ -29,9 +29,10 @@ bool	is_hit_exist_door(t_door_hit *hits, int hit_count, t_door *temp)
 static void	fill_door_hit_data(t_game *game, t_door_hit *hit, t_door *door)
 {
 	hit->door = door;
-	// hit->distance = game->ray.distance
-	hit->distance = game->ray.distance = distance(game->player.pos,(t_vec2){game->ray.ray_x,game->ray.ray_y})
+	game->ray.distance = distance(game->player.pos, \
+		(t_vec2){game->ray.ray_x, game->ray.ray_y})
 		* cosf(game->player.angle - game->ray.ray_angle);
+	hit->distance = game->ray.distance;
 	hit->orientation = check_door_orientation(game->map, \
 		game->ray.map_x, game->ray.map_y);
 	hit->ray_x = game->ray.ray_x;

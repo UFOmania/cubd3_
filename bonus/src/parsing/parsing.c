@@ -6,13 +6,13 @@
 /*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:36:52 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/05 18:48:32 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/09 10:42:28 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/parsing_bonus.h"
 
-int	get_long_line_in_map(char **map)
+static int	get_long_line_in_map(char **map)
 {
 	int	long_line;
 	int	i;
@@ -33,7 +33,7 @@ int	get_long_line_in_map(char **map)
 	return (long_line);
 }
 
-char	*copy_with_spaces(const char *src, int long_line)
+static char	*copy_with_spaces(const char *src, int long_line)
 {
 	int		len;
 	char	*dst;
@@ -56,7 +56,7 @@ char	*copy_with_spaces(const char *src, int long_line)
 	return (dst);
 }
 
-int	remove_newline_chars(t_map_mg *game_mg)
+static int	remove_newline_chars(t_map_mg *game_mg)
 {
 	int	row;
 	int	col;

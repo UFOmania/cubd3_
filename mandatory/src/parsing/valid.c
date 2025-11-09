@@ -6,13 +6,13 @@
 /*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:41:08 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/05 11:47:08 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/09 10:45:08 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/parsing_mandatory.h"
 
-bool	ispossible_characters(char c)
+static bool	ispossible_characters(char c)
 {
 	return (c == ' ' || c == '1' || c == '0' || \
 			c == '\n' || c == 'N' || c == 'S' || \

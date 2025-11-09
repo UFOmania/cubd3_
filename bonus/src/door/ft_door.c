@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_door.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 20:08:29 by ybassour          #+#    #+#             */
-/*   Updated: 2025/11/07 17:19:18 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/11/09 10:30:49 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub_bonus.h"
 
-static void	calc_door_render_data(t_game *game,t_door_hit *hit, t_door_render *r)
+static void	calc_door_render_data(t_game *game, t_door_hit \
+	*hit, t_door_render *r)
 {
 	r->column_height = (TILE_SIZE * game->ppd) / hit->distance;
 	r->open_factor = 1.0f - hit->door->offset;
@@ -40,13 +41,12 @@ static void	draw_single_door_hit(t_game *game, t_door_hit *hit,
 	draw_column(game, start, end, texture_x);
 }
 
-void	process_draw_single_door_hit(t_game *game,
-	t_door_hit *hit, int column, float ray_angle)
+static void	process_draw_single_door_hit(t_game *game, \
+	t_door_hit *hit, int column)
 {
 	t_door_render	r;
 
-	(void)ray_angle;
-	calc_door_render_data(game,hit, &r);
+	calc_door_render_data(game, hit, &r);
 	draw_single_door_hit(game, hit, column, &r);
 }
 
@@ -61,7 +61,7 @@ static void	process_single_door_ray(t_game *game, \
 	hit_count = cast_ray_collect_doors(game, ray_angle, hits);
 	while (--hit_count >= 0)
 	{
-		process_draw_single_door_hit(game, &hits[hit_count], column, ray_angle);
+		process_draw_single_door_hit(game, &hits[hit_count], column);
 	}
 }
 

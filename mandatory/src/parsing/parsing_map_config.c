@@ -6,13 +6,13 @@
 /*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:31:46 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/05 11:47:08 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/09 10:44:26 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/parsing_mandatory.h"
 
-int	check_config_position(int index)
+static int	check_config_position(int index)
 {
 	if (index != 0)
 	{
@@ -22,7 +22,7 @@ int	check_config_position(int index)
 	return (0);
 }
 
-int	parse_no_so(t_map_mg *game_mg, char *line, int index)
+static int	parse_no_so(t_map_mg *game_mg, char *line, int index)
 {
 	if (ft_strncmp(line, "NO ", 3) == 0 && !check_config_position(index))
 	{
@@ -47,7 +47,7 @@ int	parse_no_so(t_map_mg *game_mg, char *line, int index)
 	return (-1);
 }
 
-int	parse_we_ea(t_map_mg *game_mg, char *line, int index)
+static int	parse_we_ea(t_map_mg *game_mg, char *line, int index)
 {
 	if (ft_strncmp(line, "WE ", 3) == 0 && !check_config_position(index))
 	{
@@ -72,7 +72,7 @@ int	parse_we_ea(t_map_mg *game_mg, char *line, int index)
 	return (-1);
 }
 
-int	parse_colors(t_map_mg *game_mg, char *line, int index)
+static int	parse_colors(t_map_mg *game_mg, char *line, int index)
 {
 	if (ft_strncmp(line, "F ", 2) == 0 && !check_config_position(index))
 	{

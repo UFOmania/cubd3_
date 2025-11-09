@@ -6,13 +6,13 @@
 /*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:11:09 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/05 11:47:08 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/09 10:43:56 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/parsing_mandatory.h"
 
-int	get_size(const char *map_file)
+static int	get_size(const char *map_file)
 {
 	int		len;
 	int		fd;
@@ -40,7 +40,7 @@ int	get_size(const char *map_file)
 	return (len);
 }
 
-int	loop_read_map(t_map_mg *game_mg, int fd)
+static int	loop_read_map(t_map_mg *game_mg, int fd)
 {
 	int		i;
 	char	*line;
@@ -63,7 +63,7 @@ int	loop_read_map(t_map_mg *game_mg, int fd)
 	return (0);
 }
 
-int	open_map(char *map_name, t_map_mg *game_mg)
+static int	open_map(char *map_name, t_map_mg *game_mg)
 {
 	int	fd;
 	int	size;

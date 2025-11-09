@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   update.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:49:40 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/06 16:11:44 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/11/09 10:40:58 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub_bonus.h"
 
-void	handle_mouse_click(t_game *game)
+static void	handle_mouse_click(t_game *game)
 {
 	if (game->_mouse_click == true)
 	{

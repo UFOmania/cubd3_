@@ -6,13 +6,13 @@
 /*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:36:32 by massrayb          #+#    #+#             */
-/*   Updated: 2025/11/05 11:47:08 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/11/09 10:44:34 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/parsing_mandatory.h"
 
-int	parse_rgb_component(const char *str)
+static int	parse_rgb_component(const char *str)
 {
 	int	value;
 	int	i;

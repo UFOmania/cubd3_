@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 20:50:51 by ybassour          #+#    #+#             */
-/*   Updated: 2025/11/07 17:56:41 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/11/09 10:41:09 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub_bonus.h"
 
-void	lanch_engine(t_game *game)
+static void	lanch_engine(t_game *game)
 {
 	mlx_close_hook(game->mlx, close_game, game);
 	mlx_key_hook(game->mlx, input, game);
@@ -23,17 +23,10 @@ void	lanch_engine(t_game *game)
 	mlx_loop(game->mlx);
 }
 
-void	f(void)
-{
-	// system("leaks cub3D_bonus");
-	// system("lsof -c cub3D_bonus");
-}
-
 int	main(int ac, char **av)
 {
 	t_game	game;
 
-	atexit(f);
 	game = (t_game){0};
 	if (ac != 2)
 		return (display_error_arg(ERR_EXPECTED_ONE_ARG));

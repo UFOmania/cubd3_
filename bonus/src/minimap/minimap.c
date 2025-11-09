@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 20:09:24 by ybassour          #+#    #+#             */
-/*   Updated: 2025/11/05 21:13:51 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/11/09 10:39:22 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static	void	ft_draw_cell(t_game *game, t_minimap *minimap, int cell_size)
 	draw_rect(game, minimap, color, cell_size);
 }
 
-void	ft_draw_minimap_cells(t_game *game, t_minimap *minimap)
+static void	ft_draw_minimap_cells(t_game *game, t_minimap *minimap)
 {
 	char	**map;
 	int		y;
@@ -87,7 +87,7 @@ void	ft_draw_minimap_cells(t_game *game, t_minimap *minimap)
 	}
 }
 
-void	ft_draw_minimap_player(t_game *game, t_minimap *minimap)
+static void	ft_draw_minimap_player(t_game *game, t_minimap *minimap)
 {
 	ft_draw_player(game,
 		(minimap->_x_player - minimap->x_start) * minimap->cell_size,

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 20:09:31 by ybassour          #+#    #+#             */
-/*   Updated: 2025/11/07 17:30:23 by ybassour         ###   ########.fr       */
+/*   Updated: 2025/11/09 10:24:43 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static void	process_mouse_rotation(t_game *game, int32_t xpos, int32_t ypos)
 
 	center_x = WIDTH / 2;
 	game->ignore_next_mouse = true;
-	//mlx_get_mouse_pos(game->mlx, &xpos, &ypos);
 	if (xpos <= 0 || xpos >= WIDTH - 1 || ypos <= 0 || ypos >= HEIGHT - 1)
 	{
 		last_x = center_x;
@@ -47,11 +46,6 @@ void	catch_mouse_move(void *param)
 
 	game = param;
 	mlx_get_mouse_pos(game->mlx, &xpos, &ypos);
-	// if (xpos < 0 || xpos > WIDTH || ypos < 0 || ypos > HEIGHT)
-	// {
-	// 	game->player.rotate_right_mouse = 0;
-	// 	return ;
-	// }
 	if (game->ignore_next_mouse)
 	{
 		game->ignore_next_mouse = false;
